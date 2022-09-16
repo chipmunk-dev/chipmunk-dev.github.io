@@ -125,18 +125,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -182,6 +182,680 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/reverseword2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/reverseword2/" class="post-title-link" itemprop="url">단어뒤집기2 - 백준 17413번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:31:27 / Modified: 21:33:03" itemprop="dateCreated datePublished" datetime="2022-09-16T21:31:27+09:00">2022-09-16</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="요세푸스-문제-link"><a href="#요세푸스-문제-link" class="headerlink" title="요세푸스 문제 (link)"></a>요세푸스 문제 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/17413">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>문자열 S가 주어졌을 때, 이 문자열에서 단어만 뒤집으려고 한다.</p>
+<p>먼저, 문자열 S는 아래와과 같은 규칙을 지킨다.</p>
+<p>알파벳 소문자(‘a’-‘z’), 숫자(‘0’-‘9’), 공백(‘ ‘), 특수 문자(‘&lt;’, ‘&gt;’)로만 이루어져 있다.<br>문자열의 시작과 끝은 공백이 아니다.<br>‘&lt;’와 ‘&gt;’가 문자열에 있는 경우 번갈아가면서 등장하며, ‘&lt;’이 먼저 등장한다. 또, 두 문자의 개수는 같다.<br>태그는 ‘&lt;’로 시작해서 ‘&gt;’로 끝나는 길이가 3 이상인 부분 문자열이고, ‘&lt;’와 ‘&gt;’ 사이에는 알파벳 소문자와 공백만 있다. 단어는 알파벳 소문자와 숫자로 이루어진 부분 문자열이고, 연속하는 두 단어는 공백 하나로 구분한다. 태그는 단어가 아니며, 태그와 단어 사이에는 공백이 없다.</p>
+<br />
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 문자열 S가 주어진다. S의 길이는 100,000 이하이다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">baekjoon online judge</span><br><span class="line">&lt;open&gt;tag&lt;close&gt;</span><br><span class="line">&lt;   space   &gt;space space space&lt;    spa   c e&gt;</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 문자열 S의 단어를 뒤집어서 출력한다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">noojkeab enilno egduj</span><br><span class="line">&lt;open&gt;gat&lt;close&gt;</span><br><span class="line">&lt;   space   &gt;ecaps ecaps ecaps&lt;    spa   c e&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타-의견"><a href="#기타-의견" class="headerlink" title="기타 의견"></a>기타 의견</h2><p>해당 예제를 Stack 자료구조를 이용하여 풀어보았다.</p>
+<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.StringBuffer;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 방법 1</span></span><br><span class="line"><span class="comment">* 1. &lt; 가 오면, stack에 있던것을 다 뒤집어 주고 &gt;가 올떄까지 버퍼에 넣는다.</span></span><br><span class="line"><span class="comment">* 2. tag안의 문자열이 아니라면 stack에 넣는다.</span></span><br><span class="line"><span class="comment">* 3. tag안이 아닌데, 공백을 만나면 stack에 있느 값을 뒤집어 넣어준다.</span></span><br><span class="line"><span class="comment">* 4. 순회가 끝난 후 남은 stack을 뒤집어 넣어준다.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 방법 2</span></span><br><span class="line"><span class="comment">* 1. &#x27;&lt;&#x27;를 만나면 Stack에 푸시</span></span><br><span class="line"><span class="comment">* 2. Stack이 비어있을 때는 단어르 뒤집기 위한 Stack에 push</span></span><br><span class="line"><span class="comment">* 3. Stack이 비버있지 않을 때는 StringBuffer에 append</span></span><br><span class="line"><span class="comment">* 4. &#x27;&lt;&#x27;를 만나면 단어 뒤집기 위한 Stack을 StringBuffer에 append</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReverseWord2</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">    <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">    <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">    Stack&lt;Character&gt; tagStack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    Stack&lt;Character&gt; wordStack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line">    <span class="type">char</span>[] sentence = br.readLine().toCharArray();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">char</span> character: sentence) &#123;</span><br><span class="line">      <span class="keyword">if</span>(character == <span class="string">&#x27;&lt;&#x27;</span>) &#123;</span><br><span class="line">        <span class="keyword">while</span>(!wordStack.empty()) &#123;</span><br><span class="line">          sb.append(wordStack.pop());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        tagStack.push(character);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span>(tagStack.empty() &amp;&amp; character != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">        wordStack.push(character);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(character == <span class="string">&#x27;&gt;&#x27;</span>) &#123;</span><br><span class="line">          tagStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(character == <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">          <span class="keyword">while</span>(!wordStack.empty()) &#123;</span><br><span class="line">            sb.append(wordStack.pop());</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sb.append(character);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(!wordStack.empty()) &#123;</span><br><span class="line">      sb.append(wordStack.pop());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bw.write(sb.toString());</span><br><span class="line">    br.close();</span><br><span class="line">    bw.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/Josephus/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/Josephus/" class="post-title-link" itemprop="url">요세푸스 문제 - 백준 1158번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:29:40 / Modified: 21:31:08" itemprop="dateCreated datePublished" datetime="2022-09-16T21:29:40+09:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="요세푸스-문제-link"><a href="#요세푸스-문제-link" class="headerlink" title="요세푸스 문제 (link)"></a>요세푸스 문제 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1158">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p>요세푸스 문제는 다음과 같다.</p>
+<p>1번부터 N번까지 N명의 사람이 원을 이루면서 앉아있고, 양의 정수 K(≤ N)가 주어진다. 이제 순서대로 K번째 사람을 제거한다. 한 사람이 제거되면 남은 사람들로 이루어진 원을 따라 이 과정을 계속해 나간다. 이 과정은 N명의 사람이 모두 제거될 때까지 계속된다. 원에서 사람들이 제거되는 순서를 (N, K)-요세푸스 순열이라고 한다. 예를 들어 (7, 3)-요세푸스 순열은 &lt;3, 6, 2, 7, 5, 1, 4&gt;이다.</p>
+<p>N과 K가 주어지면 (N, K)-요세푸스 순열을 구하는 프로그램을 작성하시오.</p>
+<br />
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에 N과 K가 빈 칸을 사이에 두고 순서대로 주어진다. (1 ≤ K ≤ N ≤ 5,000)</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">7 3</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>예제와 같이 요세푸스 순열을 출력한다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;3, 6, 2, 7, 5, 1, 4&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="기타-의견"><a href="#기타-의견" class="headerlink" title="기타 의견"></a>기타 의견</h2><p>해당 예제를 Queue 자료구조를 이용하여 풀어보았다.</p>
+<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"><span class="keyword">import</span> java.lang.StringBuffer;</span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">JosephusMain</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">    <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">    <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>();</span><br><span class="line">    <span class="type">StringTokenizer</span> <span class="variable">st</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringTokenizer</span>(br.readLine());</span><br><span class="line">    Queue&lt;Integer&gt; q = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">numberOfPerson</span> <span class="operator">=</span> Integer.valueOf(st.nextToken());</span><br><span class="line">    <span class="type">int</span> <span class="variable">sequenceNum</span> <span class="operator">=</span> Integer.valueOf(st.nextToken());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 인원수 만큼 큐에 채워 주기</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>; i&lt;=numberOfPerson; i++) &#123;</span><br><span class="line">      q.add(i);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    sb.append(<span class="string">&quot;&lt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(q.peek() != <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="type">int</span> <span class="variable">v</span> <span class="operator">=</span> sequenceNum-<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 매 sequnceNum 인원을 queue 의 head(front)에 오도록 하기</span></span><br><span class="line">      <span class="keyword">while</span>(v-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        q.offer(q.poll());</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// queue에서 제거되어야 할 숫자(사람)을 빼면서 출력하기</span></span><br><span class="line">      sb.append(q.poll());</span><br><span class="line">      <span class="keyword">if</span>(q.peek() != <span class="literal">null</span>) &#123;</span><br><span class="line">        sb.append(<span class="string">&quot;, &quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    sb.append(<span class="string">&quot;&gt;&quot;</span>);</span><br><span class="line"></span><br><span class="line">    bw.write(sb.toString());</span><br><span class="line">    bw.close();</span><br><span class="line">    br.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/editor/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/editor/" class="post-title-link" itemprop="url">에디터 - 백준 1406번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:27:11 / Modified: 21:28:47" itemprop="dateCreated datePublished" datetime="2022-09-16T21:27:11+09:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="에디터-link"><a href="#에디터-link" class="headerlink" title="에디터 (link)"></a>에디터 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1406">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p> 한 줄로 된 간단한 에디터를 구현하려고 한다. 이 편집기는 영어 소문자만을 기록할 수 있는 편집기로, 최대 600,000글자까지 입력할 수 있다.</p>
+<p> 이 편집기에는 ‘커서’라는 것이 있는데, 커서는 문장의 맨 앞(첫 번째 문자의 왼쪽), 문장의 맨 뒤(마지막 문자의 오른쪽), 또는 문장 중간 임의의 곳(모든 연속된 두 문자 사이)에 위치할 수 있다. 즉 길이가 L인 문자열이 현재 편집기에 입력되어 있으면, 커서가 위치할 수 있는 곳은 L+1가지 경우가 있다.</p>
+<p>이 편집기가 지원하는 명령어는 다음과 같다.</p>
+<p><img src="https://velog.velcdn.com/images/vitamin_d/post/96096605-5ca8-4a00-b37e-b473f4a2524f/image.png"></p>
+<p> 초기에 편집기에 입력되어 있는 문자열이 주어지고, 그 이후 입력한 명령어가 차례로 주어졌을 때, 모든 명령어를 수행하고 난 후 편집기에 입력되어 있는 문자열을 구하는 프로그램을 작성하시오. 단, 명령어가 수행되기 전에 커서는 문장의 맨 뒤에 위치하고 있다고 한다.</p>
+<br />
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫째 줄에는 초기에 편집기에 입력되어 있는 문자열이 주어진다. 이 문자열은 길이가 N이고, 영어 소문자로만 이루어져 있으며, 길이는 100,000을 넘지 않는다. 둘째 줄에는 입력할 명령어의 개수를 나타내는 정수 M(1 ≤ M ≤ 500,000)이 주어진다. 셋째 줄부터 M개의 줄에 걸쳐 입력할 명령어가 순서대로 주어진다. 명령어는 위의 네 가지 중 하나의 형태로만 주어진다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dmih</span><br><span class="line">11</span><br><span class="line">B</span><br><span class="line">B</span><br><span class="line">P x</span><br><span class="line">L</span><br><span class="line">B</span><br><span class="line">B</span><br><span class="line">B</span><br><span class="line">P y</span><br><span class="line">D</span><br><span class="line">D</span><br><span class="line">P z</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>첫째 줄에 모든 명령어를 수행하고 난 후 편집기에 입력되어 있는 문자열을 출력한다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yxz</span><br></pre></td></tr></table></figure>
+
+<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Editor</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"></span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">    <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">    <span class="comment">// 커서 기준 왼쪽 문자열</span></span><br><span class="line">    Stack&lt;Character&gt; left = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Character&gt;();</span><br><span class="line">    <span class="comment">// 커서 기준 오른쪽 문자열</span></span><br><span class="line">    Stack&lt;Character&gt; right = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Character&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="type">String</span> <span class="variable">initialSentence</span> <span class="operator">=</span> br.readLine();</span><br><span class="line">    <span class="type">int</span> <span class="variable">line</span> <span class="operator">=</span> Integer.valueOf(br.readLine());</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 처음 주어진 문자열은 커서 왼쪽에 저장(커서는 우측에서 시작되기 떄문)</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;initialSentence.length(); i++) &#123;</span><br><span class="line">      left.push(initialSentence.charAt(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(line-- &gt; <span class="number">0</span>)&#123;</span><br><span class="line">      <span class="type">String</span> <span class="variable">command</span> <span class="operator">=</span> br.readLine();</span><br><span class="line"></span><br><span class="line">      <span class="keyword">switch</span>(command) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;L&quot;</span>:</span><br><span class="line">          <span class="comment">// 커서 왼쪽에 문자열이 있다면 -&gt; left Stack이 비어 있지 않다면</span></span><br><span class="line">          <span class="keyword">if</span>(!left.empty()) &#123;</span><br><span class="line">            <span class="comment">// 우측 Stack으로 이동</span></span><br><span class="line">            right.push(left.pop());</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;D&quot;</span>:</span><br><span class="line">          <span class="comment">// 커서 오른쪽 문자열이 있다면 -&gt; right Stack이 비어 있지 않다면</span></span><br><span class="line">          <span class="keyword">if</span>(!right.empty()) &#123;</span><br><span class="line">            <span class="comment">// 좌측 Stack으로 이동</span></span><br><span class="line">            left.push(right.pop());</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&quot;B&quot;</span>:</span><br><span class="line">          <span class="comment">// 커서 왼쪽에 문자열이 있다면 -&gt; left Stack이 비어 있지 않다면</span></span><br><span class="line">          <span class="keyword">if</span>(!left.empty()) &#123;</span><br><span class="line">            <span class="comment">// 좌측 Stack에 문자 한개 제거</span></span><br><span class="line">            left.pop();</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">          <span class="comment">// 좌측 스택에 문자 추가</span></span><br><span class="line">          left.push(command.charAt(<span class="number">2</span>));</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// left Stack에 첫번째 데이터 부터 입력</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">char</span> l: left) &#123;</span><br><span class="line">      bw.write(l);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// right Stack은 마지막에 입력된 요소가 처음으로 입력되어야 하기에 pop을 이용</span></span><br><span class="line">    <span class="keyword">while</span>(!right.empty()) &#123;</span><br><span class="line">      bw.write(right.pop());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    br.close();</span><br><span class="line">    bw.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/stacksequence/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/stacksequence/" class="post-title-link" itemprop="url">스택수열 - 백준 1874번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:19:36 / Modified: 21:22:35" itemprop="dateCreated datePublished" datetime="2022-09-16T21:19:36+09:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>2.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="스택-수열-link"><a href="#스택-수열-link" class="headerlink" title="스택 수열 (link)"></a>스택 수열 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1874">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p> 스택 (stack)은 기본적인 자료구조 중 하나로, 컴퓨터 프로그램을 작성할 때 자주 이용되는 개념이다. 스택은 자료를 넣는 (push) 입구와 자료를 뽑는 (pop) 입구가 같아 제일 나중에 들어간 자료가 제일 먼저 나오는 (LIFO, Last in First out) 특성을 가지고 있다.</p>
+<p> 1부터 n까지의 수를 스택에 넣었다가 뽑아 늘어놓음으로써, 하나의 수열을 만들 수 있다. 이때, 스택에 push하는 순서는 반드시 오름차순을 지키도록 한다고 하자. 임의의 수열이 주어졌을 때 스택을 이용해 그 수열을 만들 수 있는지 없는지, 있다면 어떤 순서로 push와 pop 연산을 수행해야 하는지를 알아낼 수 있다. 이를 계산하는 프로그램을 작성하라.</p>
+<br />
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫 줄에 n (1 ≤ n ≤ 100,000)이 주어진다. 둘째 줄부터 n개의 줄에는 수열을 이루는 1이상 n이하의 정수가 하나씩 순서대로 주어진다. 물론 같은 정수가 두 번 나오는 일은 없다.</p>
+<blockquote>
+<p>예제<br>8<br>4<br>3<br>6<br>8<br>7<br>5<br>2<br>1</p>
+</blockquote>
+<br />
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>입력된 수열을 만들기 위해 필요한 연산을 한 줄에 한 개씩 출력한다. push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경우 NO를 출력한다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br></pre></td></tr></table></figure>
+
+<h2 id="보충"><a href="#보충" class="headerlink" title="보충"></a>보충</h2><p>수학이 부족한 나에게 문제를 이해하는게 더 어려웠다…<br>위 예제를 적용해본다면,<br>첫 입력값이 <code>4</code>일 때 현재 수열은 한번도 입력이 되어있지 않다.<br>그래서 <code>sequenceNum</code>을 4까지 증가 시키며 스택에 입력한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">1</span>(stack에 푸시) =&gt; <span class="number">2</span>(stack에 푸시) =&gt; <span class="number">3</span>(stack에 푸시) =&gt; <span class="number">4</span>(stack에 푸시)</span><br><span class="line">stack = [<span class="number">1</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
+<p>그런 다음 입력값인 4를 stack에서 pop(제거)한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">4</span></span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
+<p>이제 그 다음 입력 값이 <code>3</code>인데, 이거는 증가되는 수열값인 4보다 작으므로 stack에서 해당 숫자를 pop(제거)한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">4</span></span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
+<p>이제 다음 입력 값은 <code>6</code>인데, 이는 현재 수열값인 4보다 큰 수임으로, 수열값을 6까지 증가시키며 스택에 입력한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">5</span>(stack에 푸시) =&gt; <span class="number">6</span>(stack에 푸시)</span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>](입력값인 <span class="number">6</span>을 제거)</span><br></pre></td></tr></table></figure>
+<p>이런 식으로 입력된 값을 stack에 넣고 빼는 과정을 <code>+</code>와 <code>-</code>로 나타내어 출력해야하는 문제이다.</p>
+<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.StringBuffer;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackSequence2</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">    <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">    <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(<span class="number">20</span>);</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line">    <span class="type">int</span> <span class="variable">sequenceNum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">line</span> <span class="operator">=</span> Integer.valueOf(br.readLine());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(line-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="type">int</span> <span class="variable">inputNum</span> <span class="operator">=</span> Integer.valueOf(br.readLine());</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 입력받은 값이 수열보다 클 경우</span></span><br><span class="line">      <span class="keyword">if</span>(sequenceNum &lt; inputNum) &#123;</span><br><span class="line">        <span class="comment">// 수열을 해당 값까지 늘려서 stack에 저장</span></span><br><span class="line">        <span class="keyword">while</span>(sequenceNum &lt; inputNum) &#123;</span><br><span class="line">          stack.push(++sequenceNum);</span><br><span class="line">          sb.append(<span class="string">&quot;+\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 입력받은 값을 수열에서 제거</span></span><br><span class="line">        stack.pop();</span><br><span class="line">        sb.append(<span class="string">&quot;-\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 입력받은 값이 수열보다 작을 경우</span></span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 만약 stack에 topNumber가 입력받은 값이 아니라면</span></span><br><span class="line">        <span class="keyword">if</span>(stack.peek() != inputNum) &#123;</span><br><span class="line">          bw.write(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">          bw.close();</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 해당 값을 stack에서 제거</span></span><br><span class="line">        stack.pop();</span><br><span class="line">        sb.append(<span class="string">&quot;-\n&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// string 출력 및 bufferedWriter close</span></span><br><span class="line">    bw.write(sb.toString());</span><br><span class="line">    bw.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/algorithmbracket/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/algorithmbracket/" class="post-title-link" itemprop="url">괄호 - 백준 9012번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:15:52 / Modified: 21:23:32" itemprop="dateCreated datePublished" datetime="2022-09-16T21:15:52+09:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.7k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="괄호-link"><a href="#괄호-link" class="headerlink" title="괄호 (link)"></a>괄호 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/9012">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p> 괄호 문자열(Parenthesis String, PS)은 두 개의 괄호 기호인 ‘(’ 와 ‘)’ 만으로 구성되어 있는 문자열이다.<br> 그 중에서 괄호의 모양이 바르게 구성된 문자열을 올바른 괄호 문자열(Valid PS, VPS)이라고 부른다.<br> 한 쌍의 괄호 기호로 된 “( )” 문자열은 기본 VPS 이라고 부른다.<br> 만일 x 가 VPS 라면 이것을 하나의 괄호에 넣은 새로운 문자열 “(x)”도 VPS 가 된다.<br> 그리고 두 VPS x 와 y를 접합(concatenation)시킨 새로운 문자열 xy도 VPS 가 된다.<br> 예를 들어 “(())()”와 “((()))” 는 VPS 이지만 “(()(”, “(())()))” , 그리고 “(()” 는 모두 VPS 가 아닌 문자열이다.<br>여러분은 입력으로 주어진 괄호 문자열이 VPS 인지 아닌지를 판단해서 그 결과를 YES 와 NO 로 나타내어야 한다. </p>
+<br />
+
+<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>입력 데이터는 표준 입력을 사용한다. 입력은 T개의 테스트 데이터로 주어진다. 입력의 첫 번째 줄에는 입력 데이터의 수를 나타내는 정수 T가 주어진다. 각 테스트 데이터의 첫째 줄에는 괄호 문자열이 한 줄에 주어진다. 하나의 괄호 문자열의 길이는 2 이상 50 이하이다. </p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(())())</span><br><span class="line">(((()())()</span><br><span class="line">(()())((()))</span><br><span class="line">((()()(()))(((())))()</span><br><span class="line">()()()()(()()())()</span><br><span class="line">(()((())()(</span><br></pre></td></tr></table></figure>
+
+<br />
+
+<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>출력은 표준 출력을 사용한다. 만일 입력 괄호 문자열이 올바른 괄호 문자열(VPS)이면 “YES”, 아니면 “NO”를 한 줄에 하나씩 차례대로 출력해야 한다. </p>
+<blockquote>
+<p>예제<br>NO<br>NO<br>YES<br>NO<br>YES<br>NO</p>
+</blockquote>
+<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">        Stack&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Character&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span> <span class="variable">line</span> <span class="operator">=</span> Byte.parseByte(br.readLine());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (line-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 1. 입력받은 괄호 문자열을 순회</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">inputStr</span> <span class="operator">=</span> br.readLine();</span><br><span class="line">            <span class="type">boolean</span> <span class="variable">isRight</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;inputStr.length(); i++) &#123;</span><br><span class="line"></span><br><span class="line">                <span class="type">char</span> <span class="variable">indexChar</span> <span class="operator">=</span> inputStr.charAt(i);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 여는 괄호는 Stack에 저장</span></span><br><span class="line">                <span class="keyword">if</span>(indexChar == <span class="string">&#x27;(&#x27;</span>) &#123;</span><br><span class="line">                    stack.push(<span class="string">&#x27;(&#x27;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 닫는 괄호는 Stack 에서 하나씩 빼기</span></span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(stack.empty()) &#123;</span><br><span class="line">                    <span class="comment">// but, Stack 이 비어있다면 &quot;False&quot;</span></span><br><span class="line">                    isRight = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    stack.pop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 반복문이 종료되었을 때 Stack 이 비어있고 isRight 가 &quot;Yes&quot; 이면 &quot;No&quot;</span></span><br><span class="line">            bw.write(stack.empty() &amp;&amp; isRight ? <span class="string">&quot;YES&quot;</span> : <span class="string">&quot;NO&quot;</span> );</span><br><span class="line">            bw.write(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">            stack.clear();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        br.close();</span><br><span class="line">        bw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/algorithmreverseword/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/16/algorithmreverseword/" class="post-title-link" itemprop="url">단어 뒤집기- 백준 9093번</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-09-16 21:09:56 / Modified: 21:23:09" itemprop="dateCreated datePublished" datetime="2022-09-16T21:09:56+09:00">2022-09-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.5k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>작성한 답안 코드는 제가 생각하며 푼 코드이며, 부족한 점이나 보완할 점이 있다면, 댓글 부탁드립니다. 🙏</p>
+</blockquote>
+<h2 id="문자열-뒤집기-Link"><a href="#문자열-뒤집기-Link" class="headerlink" title="문자열 뒤집기 (Link)"></a>문자열 뒤집기 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/9093">Link</a>)</h2><h3 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h3><p>문장이 주어졌을 때, 단어를 모두 뒤집어서 출력하는 프로그램을 작성하시오. 단, 단어의 순서는 바꿀 수 없다. 단어는 영어 알파벳으로만 이루어져 있다.</p>
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><p>첫째 줄에 테스트 케이스의 개수 T가 주어진다. 각 테스트 케이스는 한 줄로 이루어져 있으며, 문장이 하나 주어진다. 단어의 길이는 최대 20, 문장의 길이는 최대 1000이다. 단어와 단어 사이에는 공백이 하나 있다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2</span><br><span class="line">I am happy today</span><br><span class="line">We want to win the first prize</span><br></pre></td></tr></table></figure>
+
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><p>각 테스트 케이스에 대해서, 입력으로 주어진 문장의 단어를 모두 뒤집어 출력한다.</p>
+<blockquote>
+<p>예제</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">I ma yppah yadot</span><br><span class="line">eW tnaw ot niw eht tsrif ezirp</span><br></pre></td></tr></table></figure>
+
+<h3 id="작성한-코드"><a href="#작성한-코드" class="headerlink" title="작성한 코드"></a>작성한 코드</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">static</span> Stack&lt;Character&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Character&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getReverseWord</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">reverseWord</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (stack.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            reverseWord += stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> reverseWord;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 입력 라인수</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">line</span> <span class="operator">=</span> Integer.parseInt(br.readLine());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(line-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 문장을 char 배열로 변환</span></span><br><span class="line">            <span class="type">char</span>[] charArray = br.readLine().toCharArray();</span><br><span class="line">            <span class="comment">// 뒤집힌 문장을 저장하는 변수</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">reverseLine</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 배열만큼 반복</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> index=<span class="number">0</span>; index &lt; charArray.length; index++)&#123;</span><br><span class="line">                <span class="type">char</span> <span class="variable">target</span> <span class="operator">=</span> charArray[index];</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 공백을 만나기 전까지 Stack에 저장</span></span><br><span class="line">                <span class="keyword">if</span>(target != <span class="string">&#x27; &#x27;</span>) &#123;</span><br><span class="line">                    stack.push(target);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 공백일 경우 단어 뒤집어서 저장</span></span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    reverseLine += (getReverseWord() + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 마지막 단어 뒤집어서 저장</span></span><br><span class="line">            reverseLine += getReverseWord();</span><br><span class="line"></span><br><span class="line">            bw.write(reverseLine + <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">            stack.clear();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        br.close();</span><br><span class="line">        bw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="결과"><a href="#결과" class="headerlink" title="결과"></a>결과</h3><p><img src="https://velog.velcdn.com/images/vitamin_d/post/da7d63dd-aaa5-4054-866c-afa6f4a540f9/image.png"></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/15/220915/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -218,7 +892,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-16 20:05:18" itemprop="dateModified" datetime="2022-09-16T20:05:18+09:00">2022-09-16</time>
+      <time title="Modified: 2022-09-16 21:23:47" itemprop="dateModified" datetime="2022-09-16T21:23:47+09:00">2022-09-16</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -283,133 +957,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/14/220914/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chipmunk">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/14/220914/" class="post-title-link" itemprop="url">TIL - 220914</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-14 18:00:00" itemprop="dateCreated datePublished" datetime="2022-09-14T18:00:00+09:00">2022-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-16 20:34:01" itemprop="dateModified" datetime="2022-09-16T20:34:01+09:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>347</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>Git 실시간 강의 수강(FastCampus)<ul>
-<li>local&#x2F;remote 개념</li>
-<li>version 관리 방법(add, commit, push)</li>
-<li>github 계정 생성 및 레포지토리 관리 방법</li>
-<li>commit prefix 컨벤션</li>
-</ul>
-</li>
-<li>자료구조 문제 풀기<ul>
-<li>[Stack] 단어 뒤집기2(백준)</li>
-</ul>
-</li>
-<li>Java 자료구조 강의 듣기(자바의 정석)<ul>
-<li>ch11: HashSet, TreeSet, HashMap</li>
-</ul>
-</li>
-<li>책 읽기<ul>
-<li>객체지향의 사실과 오해</li>
-</ul>
-</li>
-</ul>
-<h2 id="내일-할-일"><a href="#내일-할-일" class="headerlink" title="내일 할 일"></a>내일 할 일</h2><ul>
-<li>Git 실시간 강의 수강(FastCampus)</li>
-<li>자료구조 문제 풀기</li>
-<li>Java 강의 듣기</li>
-<li>책 읽기</li>
-</ul>
-<h2 id="회고"><a href="#회고" class="headerlink" title="회고"></a>회고</h2><p>백엔드 개발자로 커리어 전환을 위한 패스트캠퍼스 일정의 첫째날이다.<br>오늘부터 금요일까지 Git강의를 듣게 되었고, 아직은 알고있는 것이라 복습한다 생각하고 참여하고있다.<br>아침이 아닌 점심부터 밤10까지의 교육은 아직 낯설다.. 빨리 적응하자</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
 
 </div>
   </main>
@@ -431,13 +978,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">1k</span>
+    <span title="Symbols count total">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1 mins.</span>
+    <span title="Reading time total">10 mins.</span>
   </span>
 </div>
   <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
