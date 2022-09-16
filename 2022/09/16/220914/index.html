@@ -20,23 +20,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chipmunk-dev.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.13.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Chipmunk Devlog">
-<meta property="og:url" content="https://chipmunk-dev.github.io/index.html">
+    <meta name="description" content="2022&#x2F;9&#x2F;14 (수)오늘 한 일 Git 실시간 강의 수강(FastCampus) local&#x2F;remote 개념 version 관리 방법(add, commit, push) github 계정 생성 및 레포지토리 관리 방법 commit prefix 컨벤션   자료구조 문제 풀기 [Stack] 단어 뒤집기2(백준)   Java 자료구조">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TIL - 220914">
+<meta property="og:url" content="https://chipmunk-dev.github.io/2022/09/16/220914/index.html">
 <meta property="og:site_name" content="Chipmunk Devlog">
+<meta property="og:description" content="2022&#x2F;9&#x2F;14 (수)오늘 한 일 Git 실시간 강의 수강(FastCampus) local&#x2F;remote 개념 version 관리 방법(add, commit, push) github 계정 생성 및 레포지토리 관리 방법 commit prefix 컨벤션   자료구조 문제 풀기 [Stack] 단어 뒤집기2(백준)   Java 자료구조">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-16T04:57:08.000Z">
+<meta property="article:modified_time" content="2022-09-16T04:57:48.081Z">
 <meta property="article:author" content="chipmunk">
+<meta property="article:tag" content="TIL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://chipmunk-dev.github.io/">
+<link rel="canonical" href="https://chipmunk-dev.github.io/2022/09/16/220914/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2022/09/16/220914/","path":"2022/09/16/220914/","title":"TIL - 220914"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Chipmunk Devlog</title>
+<title>TIL - 220914 | Chipmunk Devlog</title>
   
 
 
@@ -64,7 +69,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Chipmunk Devlog</h1>
+      <p class="site-title">Chipmunk Devlog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -92,7 +97,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -105,6 +110,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2022-x2F-9-x2F-14-%EC%88%98"><span class="nav-number">1.</span> <span class="nav-text">2022&#x2F;9&#x2F;14 (수)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%98%A4%EB%8A%98-%ED%95%9C-%EC%9D%BC"><span class="nav-number">1.1.</span> <span class="nav-text">오늘 한 일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%82%B4%EC%9D%BC-%ED%95%A0-%EC%9D%BC"><span class="nav-number">1.2.</span> <span class="nav-text">내일 할 일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9A%8C%EA%B3%A0"><span class="nav-number">1.3.</span> <span class="nav-text">회고</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -150,16 +156,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
     <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/220914/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -173,13 +180,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="name" content="TIL - 220914 | Chipmunk Devlog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/220914/" class="post-title-link" itemprop="url">TIL - 220914</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          TIL - 220914
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -203,7 +210,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="2022-x2F-9-x2F-14-수"><a href="#2022-x2F-9-x2F-14-수" class="headerlink" title="2022&#x2F;9&#x2F;14 (수)"></a>2022&#x2F;9&#x2F;14 (수)</h1><h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
+        <h1 id="2022-x2F-9-x2F-14-수"><a href="#2022-x2F-9-x2F-14-수" class="headerlink" title="2022&#x2F;9&#x2F;14 (수)"></a>2022&#x2F;9&#x2F;14 (수)</h1><h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
 <li>Git 실시간 강의 수강(FastCampus)<ul>
 <li>local&#x2F;remote 개념</li>
 <li>version 관리 방법(add, commit, push)</li>
@@ -232,7 +239,6 @@
 </ul>
 <h2 id="회고"><a href="#회고" class="headerlink" title="회고"></a>회고</h2><p>백엔드 개발자로 커리어 전환을 위한 패스트캠퍼스 일정의 첫째날이다.<br>오늘부터 금요일까지 Git강의를 듣게 되었고, 아직은 알고있는 것이라 복습한다 생각하고 참여하고있다.<br>아침이 아닌 점심부터 밤10까지의 교육은 아직 낯설다.. 빨리 적응하자</p>
 
-      
     </div>
 
     
@@ -240,90 +246,25 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          <div class="post-tags">
+              <a href="/tags/TIL/" rel="tag"># TIL</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/09/16/220915/" rel="prev" title="TIL - 220915">
+                  <i class="fa fa-chevron-left"></i> TIL - 220915
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
     </footer>
   </article>
 </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/220915/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chipmunk">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/220915/" class="post-title-link" itemprop="url">TIL - 220915</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-16 01:17:03 / Modified: 13:58:02" itemprop="dateCreated datePublished" datetime="2022-09-16T01:17:03+09:00">2022-09-16</time>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="오늘-한-것"><a href="#오늘-한-것" class="headerlink" title="오늘 한 것"></a>오늘 한 것</h2><ul>
-<li>자료구조 문제 풀기 : Stack (단어 뒤집기2)</li>
-<li>Java : HashSet, TreeSet, HashMap, Collections class</li>
-<li>Git : git workflow, Git blog</li>
-</ul>
-<h2 id="내일-할-것"><a href="#내일-할-것" class="headerlink" title="내일 할 것"></a>내일 할 것</h2><ul>
-<li>Git : 4명에서 협업 경험하기 (fork, pull-request)</li>
-<li>Java : 제네릭, Iterator</li>
-<li>알고리즘 : 기초 수학(나머지, 공배수, 공약수 등) 풀기</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
