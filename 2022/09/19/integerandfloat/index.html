@@ -21,28 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chipmunk-dev.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="오늘 한 일 Git 실시간 강의 수강(FastCampus) local&#x2F;remote 개념 version 관리 방법(add, commit, push) github 계정 생성 및 레포지토리 관리 방법 commit prefix 컨벤션   자료구조 문제 풀기 [Stack] 단어 뒤집기2(백준)   Java 자료구조 강의 듣기(자바의 정석) ch11: Has">
+    <meta name="description" content="정수와 실수자바에서 정수와 실수를 표현하는 기본 자료형에는 4가지가 있다. 정수 (1byte) byte (2byte) short (4byye) int (8byte) long  실수 (4byte) float (8byte) double  정수와 실수는 메모리에 자료형의 크기만큼 공간을 할당하여 데이터를 2진수로 저장한다. 그렇다면, 자바에서 정수와 실수가 어떻">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TIL - 220914">
-<meta property="og:url" content="https://chipmunk-dev.github.io/2022/09/14/220914/index.html">
+<meta property="og:title" content="2진수와 정수의 계산에 대하여">
+<meta property="og:url" content="https://chipmunk-dev.github.io/2022/09/19/integerandfloat/index.html">
 <meta property="og:site_name" content="Chipmunk Devlog">
-<meta property="og:description" content="오늘 한 일 Git 실시간 강의 수강(FastCampus) local&#x2F;remote 개념 version 관리 방법(add, commit, push) github 계정 생성 및 레포지토리 관리 방법 commit prefix 컨벤션   자료구조 문제 풀기 [Stack] 단어 뒤집기2(백준)   Java 자료구조 강의 듣기(자바의 정석) ch11: Has">
+<meta property="og:description" content="정수와 실수자바에서 정수와 실수를 표현하는 기본 자료형에는 4가지가 있다. 정수 (1byte) byte (2byte) short (4byye) int (8byte) long  실수 (4byte) float (8byte) double  정수와 실수는 메모리에 자료형의 크기만큼 공간을 할당하여 데이터를 2진수로 저장한다. 그렇다면, 자바에서 정수와 실수가 어떻">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-14T09:00:00.000Z">
-<meta property="article:modified_time" content="2022-09-16T15:01:43.538Z">
+<meta property="article:published_time" content="2022-09-19T06:48:30.000Z">
+<meta property="article:modified_time" content="2022-09-19T07:20:39.084Z">
 <meta property="article:author" content="chipmunk">
-<meta property="article:tag" content="TIL">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://chipmunk-dev.github.io/2022/09/14/220914/">
+<link rel="canonical" href="https://chipmunk-dev.github.io/2022/09/19/integerandfloat/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2022/09/14/220914/","path":"2022/09/14/220914/","title":"TIL - 220914"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2022/09/19/integerandfloat/","path":"2022/09/19/integerandfloat/","title":"2진수와 정수의 계산에 대하여"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>TIL - 220914 | Chipmunk Devlog</title>
+<title>2진수와 정수의 계산에 대하여 | Chipmunk Devlog</title>
   
 
 
@@ -127,7 +127,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%98%A4%EB%8A%98-%ED%95%9C-%EC%9D%BC"><span class="nav-number">1.</span> <span class="nav-text">오늘 한 일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%82%B4%EC%9D%BC-%ED%95%A0-%EC%9D%BC"><span class="nav-number">2.</span> <span class="nav-text">내일 할 일</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%ED%9A%8C%EA%B3%A0"><span class="nav-number">3.</span> <span class="nav-text">회고</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%A0%95%EC%88%98%EC%99%80-%EC%8B%A4%EC%88%98"><span class="nav-number">1.</span> <span class="nav-text">정수와 실수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%A0%95%EC%88%98"><span class="nav-number">1.1.</span> <span class="nav-text">정수</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%8B%A4%EC%88%98"><span class="nav-number">1.2.</span> <span class="nav-text">실수</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%B6%80%ED%98%B8%EB%B9%84%ED%8A%B8"><span class="nav-number">2.</span> <span class="nav-text">부호비트</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9D%8C%EC%88%98%EB%A5%BC-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%B0%A9%EB%B2%95"><span class="nav-number">3.</span> <span class="nav-text">음수를 만드는 방법</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -201,7 +201,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/14/220914/">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/19/integerandfloat/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -214,12 +214,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="TIL - 220914 | Chipmunk Devlog">
+      <meta itemprop="name" content="2진수와 정수의 계산에 대하여 | Chipmunk Devlog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TIL - 220914
+          2진수와 정수의 계산에 대하여
         </h1>
 
         <div class="post-meta-container">
@@ -229,15 +229,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2022-09-14 18:00:00" itemprop="dateCreated datePublished" datetime="2022-09-14T18:00:00+09:00">2022-09-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2022-09-17 00:01:43" itemprop="dateModified" datetime="2022-09-17T00:01:43+09:00">2022-09-17</time>
+      <time title="Created: 2022-09-19 15:48:30 / Modified: 16:20:39" itemprop="dateCreated datePublished" datetime="2022-09-19T15:48:30+09:00">2022-09-19</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -245,7 +239,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
     </span>
 
@@ -263,7 +257,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>347</span>
+      <span>858</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -281,34 +275,39 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="오늘-한-일"><a href="#오늘-한-일" class="headerlink" title="오늘 한 일"></a>오늘 한 일</h2><ul>
-<li>Git 실시간 강의 수강(FastCampus)<ul>
-<li>local&#x2F;remote 개념</li>
-<li>version 관리 방법(add, commit, push)</li>
-<li>github 계정 생성 및 레포지토리 관리 방법</li>
-<li>commit prefix 컨벤션</li>
+        <h2 id="정수와-실수"><a href="#정수와-실수" class="headerlink" title="정수와 실수"></a>정수와 실수</h2><p>자바에서 정수와 실수를 표현하는 기본 자료형에는 4가지가 있다.</p>
+<h3 id="정수"><a href="#정수" class="headerlink" title="정수"></a>정수</h3><ul>
+<li>(1byte) byte</li>
+<li>(2byte) short</li>
+<li>(4byye) int</li>
+<li>(8byte) long</li>
 </ul>
-</li>
-<li>자료구조 문제 풀기<ul>
-<li>[Stack] 단어 뒤집기2(백준)</li>
+<h3 id="실수"><a href="#실수" class="headerlink" title="실수"></a>실수</h3><ul>
+<li>(4byte) float</li>
+<li>(8byte) double</li>
 </ul>
-</li>
-<li>Java 자료구조 강의 듣기(자바의 정석)<ul>
-<li>ch11: HashSet, TreeSet, HashMap</li>
-</ul>
-</li>
-<li>책 읽기<ul>
-<li>객체지향의 사실과 오해</li>
-</ul>
-</li>
-</ul>
-<h2 id="내일-할-일"><a href="#내일-할-일" class="headerlink" title="내일 할 일"></a>내일 할 일</h2><ul>
-<li>Git 실시간 강의 수강(FastCampus)</li>
-<li>자료구조 문제 풀기</li>
-<li>Java 강의 듣기</li>
-<li>책 읽기</li>
-</ul>
-<h2 id="회고"><a href="#회고" class="headerlink" title="회고"></a>회고</h2><p>백엔드 개발자로 커리어 전환을 위한 패스트캠퍼스 일정의 첫째날이다.<br>오늘부터 금요일까지 Git강의를 듣게 되었고, 아직은 알고있는 것이라 복습한다 생각하고 참여하고있다.<br>아침이 아닌 점심부터 밤10까지의 교육은 아직 낯설다.. 빨리 적응하자</p>
+<p>정수와 실수는 메모리에 자료형의 크기만큼 공간을 할당하여 데이터를 2진수로 저장한다.</p>
+<p>그렇다면, 자바에서 정수와 실수가 어떻게 저장되고 변화될까?</p>
+<h2 id="부호비트"><a href="#부호비트" class="headerlink" title="부호비트"></a>부호비트</h2><p>우선 정수나 실수 모두 메모리에는 2진수로 변환하여 저장한다.<br>1byte &#x3D; 8bit로 표현하는데, 이미지화를 시킨다면<br>1byte &#x3D; 00000000와 같이 8개의 비트로 나타낸다.</p>
+<p>이 중에서 첫번째 자리의 비트는 부호비트로 사용한다.<br>부호비트란 양수와 음수를 표현하기 위한 비트로써<br>0일때는 양수<br>1일때는 음수<br>로 표현한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span> =&gt; <span class="number">00001010</span></span><br><span class="line">-<span class="number">10</span> =&gt; <span class="number">11110110</span></span><br></pre></td></tr></table></figure>
+
+<p>부호비트를 제외한 나머지 비트는 정수를 표현할 때 사용하며, 이를 정수부라고 표현한다.</p>
+<h2 id="음수를-만드는-방법"><a href="#음수를-만드는-방법" class="headerlink" title="음수를 만드는 방법"></a>음수를 만드는 방법</h2><p>사람에게 빼기에 대한 계산식을 적어보라고한다면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10 - 5</span><br><span class="line">22 - 13</span><br><span class="line">5 - 8</span><br></pre></td></tr></table></figure>
+<p>이렇게 식을 적고 계산한다.<br>하지만 컴퓨터에게는 빼기가아닌 이또한 더하기 연산으로 계산한다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">10 + (-5)</span><br><span class="line">22 + (-13)</span><br><span class="line">5 + (-8)</span><br></pre></td></tr></table></figure>
+
+<p>수를 빼는게 아닌 양수에 음수를 더한다고 보면된다.</p>
+<p>그러면 빼기 연산자가 실행되는 과정을 살펴보자.</p>
+<p>10 - 5라는 식이 있다고 봤을 때<br>(1byte 기준으로 작성)</p>
+<ol>
+<li>10을 2진수로 변경한다<br>1.1 10 -&gt; 00001010</li>
+<li>-5를 2진수로 변경한다.<br>2.1 5의 2진수 -&gt; 00000101<br>2.2 5의 2진수에 1의보수(0은 1로, 1은 0으로)<br>  00000101 -&gt; 11111010<br>2.3 반전시킨 1의 보수에 1비트 가산(2의보수)<br>  11111011<br>3.두 수를 더하기 연산<br>  00001010 + 11111011</li>
+</ol>
+<p>결과: 00000101 -&gt; 5</p>
+<p>위처럼 1의 보수와 2의 보수를 이용하여 양수를 음수로 변환 후 더하기 연산으로 값을 도출한다.</p>
+<p>다음 게시글에서 실수를 표현할 때 고정소수점과 부동소수점에 대한 정리와 실수를 부동소수점으로 변환하는 과정에 대하여 작성하겠다.</p>
 
     </div>
 
@@ -326,7 +325,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://chipmunk-dev.github.io/2022/09/14/220914/" title="TIL - 220914">https://chipmunk-dev.github.io/2022/09/14/220914/</a>
+      <a href="https://chipmunk-dev.github.io/2022/09/19/integerandfloat/" title="2진수와 정수의 계산에 대하여">https://chipmunk-dev.github.io/2022/09/19/integerandfloat/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY</a> unless stating additionally.
@@ -335,18 +334,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/TIL/" rel="tag"># TIL</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2022/09/18/jjandi/" rel="prev" title="Github 잔디가 안심어져...">
+                  <i class="fa fa-chevron-left"></i> Github 잔디가 안심어져...
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/09/15/220915/" rel="next" title="TIL - 220915">
-                  TIL - 220915 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
