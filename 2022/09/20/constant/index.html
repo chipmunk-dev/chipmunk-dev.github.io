@@ -23,28 +23,28 @@
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3038398824598758" crossorigin="anonymous"></script>
 
-    <meta name="description" content="오늘 한 것 Java: 기본 문법 복습 Algorithm: 쇠막대기 (백준 10799번) 객체지향의 사실과 오해 2장까지 읽기  내일 할 것 Java: 객체지향에 대한 복습 Algorithm: 오큰수, 오등큰수 (백준) 객체지향의 사실과 오해 3장까지 읽기">
+    <meta name="description" content="상수프로그래밍에서 변할 수 없는 수를 상수라고 한다.자바에는 두가지 상수타입이 존재한다. 리터럴(literal)자바에서 리터럴 혹은 리터럴 값이라고 많이 표현하는데정수: 100, 500, 3 …실수: 3.14, 2.111111 …문자: ‘Z’, ‘오’ …문자열: “배고파”, “안녕” …논리: true, false 등 값 그 자체를 리터럴이라고 한다. 100">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TIL - 220917">
-<meta property="og:url" content="https://chipmunk-dev.github.io/2022/09/17/TIL220917/index.html">
+<meta property="og:title" content="Java의 두 가지 상수">
+<meta property="og:url" content="https://chipmunk-dev.github.io/2022/09/20/constant/index.html">
 <meta property="og:site_name" content="Chipmunk Devlog">
-<meta property="og:description" content="오늘 한 것 Java: 기본 문법 복습 Algorithm: 쇠막대기 (백준 10799번) 객체지향의 사실과 오해 2장까지 읽기  내일 할 것 Java: 객체지향에 대한 복습 Algorithm: 오큰수, 오등큰수 (백준) 객체지향의 사실과 오해 3장까지 읽기">
+<meta property="og:description" content="상수프로그래밍에서 변할 수 없는 수를 상수라고 한다.자바에는 두가지 상수타입이 존재한다. 리터럴(literal)자바에서 리터럴 혹은 리터럴 값이라고 많이 표현하는데정수: 100, 500, 3 …실수: 3.14, 2.111111 …문자: ‘Z’, ‘오’ …문자열: “배고파”, “안녕” …논리: true, false 등 값 그 자체를 리터럴이라고 한다. 100">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-09-17T11:46:22.000Z">
-<meta property="article:modified_time" content="2022-09-17T11:55:35.732Z">
+<meta property="article:published_time" content="2022-09-20T14:25:04.000Z">
+<meta property="article:modified_time" content="2022-09-20T14:33:19.445Z">
 <meta property="article:author" content="chipmunk">
-<meta property="article:tag" content="TIL">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://chipmunk-dev.github.io/2022/09/17/TIL220917/">
+<link rel="canonical" href="https://chipmunk-dev.github.io/2022/09/20/constant/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2022/09/17/TIL220917/","path":"2022/09/17/TIL220917/","title":"TIL - 220917"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2022/09/20/constant/","path":"2022/09/20/constant/","title":"Java의 두 가지 상수"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>TIL - 220917 | Chipmunk Devlog</title>
+<title>Java의 두 가지 상수 | Chipmunk Devlog</title>
   
 
 
@@ -129,7 +129,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%98%A4%EB%8A%98-%ED%95%9C-%EA%B2%83"><span class="nav-number">1.</span> <span class="nav-text">오늘 한 것</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%82%B4%EC%9D%BC-%ED%95%A0-%EA%B2%83"><span class="nav-number">2.</span> <span class="nav-text">내일 할 것</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%83%81%EC%88%98"><span class="nav-number">1.</span> <span class="nav-text">상수</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%A6%AC%ED%84%B0%EB%9F%B4-literal"><span class="nav-number">1.1.</span> <span class="nav-text">리터럴(literal)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%8B%AC%EB%B3%BC%EB%A6%AD-Symbolic"><span class="nav-number">1.2.</span> <span class="nav-text">심볼릭(Symbolic)</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -203,7 +203,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/17/TIL220917/">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/20/constant/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -216,12 +216,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="TIL - 220917 | Chipmunk Devlog">
+      <meta itemprop="name" content="Java의 두 가지 상수 | Chipmunk Devlog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TIL - 220917
+          Java의 두 가지 상수
         </h1>
 
         <div class="post-meta-container">
@@ -233,7 +233,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2022-09-17 20:46:22 / Modified: 20:55:35" itemprop="dateCreated datePublished" datetime="2022-09-17T20:46:22+09:00">2022-09-17</time>
+      <time title="Created: 2022-09-20 23:25:04 / Modified: 23:33:19" itemprop="dateCreated datePublished" datetime="2022-09-20T23:25:04+09:00">2022-09-20</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -241,7 +241,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/TIL/" itemprop="url" rel="index"><span itemprop="name">TIL</span></a>
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
         </span>
     </span>
 
@@ -261,8 +261,8 @@
       </span>
       <span class="post-meta-item-text">Disqus: </span>
     
-    <a title="disqus" href="/2022/09/17/TIL220917/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/17/TIL220917/" itemprop="commentCount"></span>
+    <a title="disqus" href="/2022/09/20/constant/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/20/constant/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -273,7 +273,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>111</span>
+      <span>461</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -291,16 +291,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="오늘-한-것"><a href="#오늘-한-것" class="headerlink" title="오늘 한 것"></a>오늘 한 것</h2><ul>
-<li>Java: 기본 문법 복습</li>
-<li>Algorithm: 쇠막대기 (백준 10799번)</li>
-<li>객체지향의 사실과 오해 2장까지 읽기</li>
-</ul>
-<h2 id="내일-할-것"><a href="#내일-할-것" class="headerlink" title="내일 할 것"></a>내일 할 것</h2><ul>
-<li>Java: 객체지향에 대한 복습</li>
-<li>Algorithm: 오큰수, 오등큰수 (백준)</li>
-<li>객체지향의 사실과 오해 3장까지 읽기</li>
-</ul>
+        <h2 id="상수"><a href="#상수" class="headerlink" title="상수"></a>상수</h2><p>프로그래밍에서 변할 수 없는 수를 <code>상수</code>라고 한다.<br>자바에는 두가지 상수타입이 존재한다.</p>
+<h3 id="리터럴-literal"><a href="#리터럴-literal" class="headerlink" title="리터럴(literal)"></a>리터럴(literal)</h3><p>자바에서 리터럴 혹은 리터럴 값이라고 많이 표현하는데<br>정수: 100, 500, 3 …<br>실수: 3.14, 2.111111 …<br>문자: ‘Z’, ‘오’ …<br>문자열: “배고파”, “안녕” …<br>논리: true, false</p>
+<p>등 값 그 자체를 리터럴이라고 한다.</p>
+<p>100과 500은 <code>정수 리터럴</code>이며, 3.14, 2.11111 은 <code>실수 리터럴</code>이다.<br>리터럴은 상수이며 변할 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 변수</span></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리터럴을 변수처럼 변할 수 없다.</span></span><br><span class="line"><span class="number">100</span> = <span class="number">500</span>; <span class="comment">// X</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="심볼릭-Symbolic"><a href="#심볼릭-Symbolic" class="headerlink" title="심볼릭(Symbolic)"></a>심볼릭(Symbolic)</h3><p>심볼릭 상수는 변수와 <code>final</code>키워드가 같이 사용된 형태를 말한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">MAX_NUM</span> <span class="operator">=</span> <span class="number">10000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>위처럼 앞에 <code>final</code>을 상징적으로 붙여 “ 이 변수는 앞으로 상수야! “ 라고 표현해줄 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">num = <span class="number">500</span>; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+
+<p>다만, 초기화를 하지 않고 선언했을 때 값을 한번 할당할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> num;</span><br><span class="line">num = <span class="number">100</span>; <span class="comment">// 가능</span></span><br><span class="line">num = <span class="number">500</span>; <span class="comment">// 불가능</span></span><br></pre></td></tr></table></figure>
+
+
 
     </div>
 
@@ -318,7 +324,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://chipmunk-dev.github.io/2022/09/17/TIL220917/" title="TIL - 220917">https://chipmunk-dev.github.io/2022/09/17/TIL220917/</a>
+      <a href="https://chipmunk-dev.github.io/2022/09/20/constant/" title="Java의 두 가지 상수">https://chipmunk-dev.github.io/2022/09/20/constant/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY</a> unless stating additionally.
@@ -327,21 +333,18 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/TIL/" rel="tag"># TIL</a>
+              <a href="/tags/Java/" rel="tag"># Java</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2022/09/17/TIL220916/" rel="prev" title="TIL - 220916">
-                  <i class="fa fa-chevron-left"></i> TIL - 220916
+                <a href="/2022/09/19/floatingNumber/" rel="prev" title="실수의 2진수 표현에 대하여">
+                  <i class="fa fa-chevron-left"></i> 실수의 2진수 표현에 대하여
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2022/09/18/jjandi/" rel="next" title="Github 잔디가 안심어져...">
-                  Github 잔디가 안심어져... <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
