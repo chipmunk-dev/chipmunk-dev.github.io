@@ -136,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">15</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,154 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/20/literalMemory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/20/literalMemory/" class="post-title-link" itemprop="url">리터럴과 메모리</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-20 23:41:52" itemprop="dateCreated datePublished" datetime="2022-09-20T23:41:52+09:00">2022-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2022-09-21 00:13:48" itemprop="dateModified" datetime="2022-09-21T00:13:48+09:00">2022-09-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/09/20/literalMemory/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/20/literalMemory/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <blockquote>
+<p>해당 포스팅은 <a target="_blank" rel="noopener" href="https://www.codelatte.io/">코드라뗴</a>의 자바 강의를 공부하며 작성한 글입니다.</p>
+</blockquote>
+<h2 id="리터럴과-메모리의-관계"><a href="#리터럴과-메모리의-관계" class="headerlink" title="리터럴과 메모리의 관계"></a>리터럴과 메모리의 관계</h2><p>정수형에서 리터럴과 실수형에서 리터럴에는 접미사가 붙는 경우가 있다.<br><code>long</code> 타입과 <code>float</code> 타입의 리터럴은 <code>L</code>과 <code>F</code>을 붙인다.</p>
+<p>Java는 정수형은 <code>int</code>를 실수형은 <code>double</code>을 기본 리터럴로 사용한다.<br>그렇기 때문에 변수에 리터럴을 할당할 때에도 메모리의 변환이 일어나는데<br>아래의 코드를 보면서 확인하자.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+<p>num이라는 변수에 10을 할당할 때 메모리에서는 여러가지 일이 일어나는데</p>
+<ol>
+<li>int 자료형인 num 변수가 메모리에 4byte를 할당한다.</li>
+<li>오른쪽에 10이라는 숫자는 스택 메모리라는 공간에 일시적으로 4byte를 할당하여 <code>00000000 00000000 00000000 00001010</code> 이라는 값을 적재한다.</li>
+<li>그런 다음 변수의 메모리 공간에 리터럴 값이 저장되고, 리터럴이 저장된 메모리 공간을 해제한다.</li>
+</ol>
+<p>그러면 byte와 short를 할당할 때는 어떨까?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">short</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">100</span>;</span><br></pre></td></tr></table></figure>
+<p>short에 정수 리터럴 100을 할당할 때는</p>
+<ol>
+<li>short 자료형인 num 변수가 메모리에 2byte를 할당한다.</li>
+<li>리터럴 100은 정수형(4byte)이기에 <code>00000000 00000000 00000000 01100100</code>을 스택 메모리에 할당한다.</li>
+<li>리터럴값은 4byte이고, num은 2byte(short)이기에 리터럴 메모리의 앞 2byte를 제거한 뒤(<code>00000000 01100100</code>)<br>변수 메모리에 할당한다. 그런 다음 리터럴이 저장된 스택 메모리는 공간을 해제한다.</li>
+</ol>
+<p>만약 리터럴에 저장된 값이 2byte보다 클 경우 명시적 형변환을 해야한다. (형변환은 다른 포스트에서 작성해보겠다)</p>
+<p>그렇다면 정수 리터럴인 4byte보다 큰 8byte(long)에 값을 할당될 때는 어떻게 될까?<br>이건 long타입의 변수를 선언하기에 jvm(자바 가상 머신)에게 리터럴 값을 8byte로 할당해달라고 <code>L</code>접미사를 사용한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">long</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">1000000000000000L</span>;</span><br></pre></td></tr></table></figure>
+<p>위 처럼 리터럴에 <code>L</code>을 붙여줌으로 Java에게 큰 값이다라는 정보를 준다.</p>
+<ol>
+<li>long 자료형인 num 변수가 메모리에 8byte 메모리 공간을 확보한다.</li>
+<li>리터럴 1000조는 큰 수이기에 접미사 <code>L</code>을 통하여 스택의 8Byte공간에 리터럴 값을 할당한다.</li>
+<li>리터럴값을 num 변수에 리터럴값을 num변수에 저장(복사)후 스택 메모리를 해제한다.</li>
+</ol>
+<h2 id="실수-리터럴중-32-123456789F와-32-123456789은-다르다"><a href="#실수-리터럴중-32-123456789F와-32-123456789은-다르다" class="headerlink" title="실수 리터럴중 32.123456789F와 32.123456789은 다르다."></a>실수 리터럴중 32.123456789F와 32.123456789은 다르다.</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span> <span class="variable">bigDecimalNum1</span> <span class="operator">=</span> <span class="number">32.123456789F</span>;</span><br><span class="line"><span class="type">double</span> <span class="variable">bigDecimalNum2</span> <span class="operator">=</span> <span class="number">32.123456789</span>;</span><br></pre></td></tr></table></figure>
+
+<p>두 값은 <a href="https://chipmunk-dev.github.io/2022/09/19/floatingNumber/">실수의 2진수 표현에 대하여</a> 포스팅에서 다뤘듯이 단정도와 배정도의 차이로 인하여 2진수의 표현방식이 다르며, 실제 값도 다르게 표현된다.</p>
+<p>bigRealNumber1은 단정도로 실수를 2진수로 변환 후 8byte로 암시적 형변환이 되는것이라<br><code>0100000001000000000011111100110101100000000000000000000000000000</code> 지수부와 가수부의 추가공간이 다 0으로 채워지지만</p>
+<p>bigRealNumber2는 배정도로 실수를 2진수로 변환하기 때문에 8byte의 지수부와 가수부를 다 사용하여 저장한다.<br><code>0100000001000000000011111100110101101110100110111001110010110010</code></p>
+<p>그렇기에 보기에는 같은 수이지만, 메모리에는 실제적으로 다른 값으로 저장된다.</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1355,139 +1503,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/16/stacksequence/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chipmunk">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/16/stacksequence/" class="post-title-link" itemprop="url">스택수열 - 백준 1874번</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-16 21:19:36 / Modified: 21:22:35" itemprop="dateCreated datePublished" datetime="2022-09-16T21:19:36+09:00">2022-09-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/09/16/stacksequence/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/16/stacksequence/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.1k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="스택-수열-link"><a href="#스택-수열-link" class="headerlink" title="스택 수열 (link)"></a>스택 수열 (<a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/1874">link</a>)</h1><h2 id="문제"><a href="#문제" class="headerlink" title="문제"></a>문제</h2><p> 스택 (stack)은 기본적인 자료구조 중 하나로, 컴퓨터 프로그램을 작성할 때 자주 이용되는 개념이다. 스택은 자료를 넣는 (push) 입구와 자료를 뽑는 (pop) 입구가 같아 제일 나중에 들어간 자료가 제일 먼저 나오는 (LIFO, Last in First out) 특성을 가지고 있다.</p>
-<p> 1부터 n까지의 수를 스택에 넣었다가 뽑아 늘어놓음으로써, 하나의 수열을 만들 수 있다. 이때, 스택에 push하는 순서는 반드시 오름차순을 지키도록 한다고 하자. 임의의 수열이 주어졌을 때 스택을 이용해 그 수열을 만들 수 있는지 없는지, 있다면 어떤 순서로 push와 pop 연산을 수행해야 하는지를 알아낼 수 있다. 이를 계산하는 프로그램을 작성하라.</p>
-<br />
-
-<h2 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h2><p>첫 줄에 n (1 ≤ n ≤ 100,000)이 주어진다. 둘째 줄부터 n개의 줄에는 수열을 이루는 1이상 n이하의 정수가 하나씩 순서대로 주어진다. 물론 같은 정수가 두 번 나오는 일은 없다.</p>
-<blockquote>
-<p>예제<br>8<br>4<br>3<br>6<br>8<br>7<br>5<br>2<br>1</p>
-</blockquote>
-<br />
-
-<h2 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h2><p>입력된 수열을 만들기 위해 필요한 연산을 한 줄에 한 개씩 출력한다. push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경우 NO를 출력한다.</p>
-<blockquote>
-<p>예제</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">+</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">+</span><br><span class="line">+</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br><span class="line">-</span><br></pre></td></tr></table></figure>
-
-<h2 id="보충"><a href="#보충" class="headerlink" title="보충"></a>보충</h2><p>수학이 부족한 나에게 문제를 이해하는게 더 어려웠다…<br>위 예제를 적용해본다면,<br>첫 입력값이 <code>4</code>일 때 현재 수열은 한번도 입력이 되어있지 않다.<br>그래서 <code>sequenceNum</code>을 4까지 증가 시키며 스택에 입력한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">1</span>(stack에 푸시) =&gt; <span class="number">2</span>(stack에 푸시) =&gt; <span class="number">3</span>(stack에 푸시) =&gt; <span class="number">4</span>(stack에 푸시)</span><br><span class="line">stack = [<span class="number">1</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]</span><br></pre></td></tr></table></figure>
-<p>그런 다음 입력값인 4를 stack에서 pop(제거)한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">4</span></span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure>
-<p>이제 그 다음 입력 값이 <code>3</code>인데, 이거는 증가되는 수열값인 4보다 작으므로 stack에서 해당 숫자를 pop(제거)한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">4</span></span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>]</span><br></pre></td></tr></table></figure>
-<p>이제 다음 입력 값은 <code>6</code>인데, 이는 현재 수열값인 4보다 큰 수임으로, 수열값을 6까지 증가시키며 스택에 입력한다.</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sequenceNum = <span class="number">5</span>(stack에 푸시) =&gt; <span class="number">6</span>(stack에 푸시)</span><br><span class="line">stack = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>] =&gt; [<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>](입력값인 <span class="number">6</span>을 제거)</span><br></pre></td></tr></table></figure>
-<p>이런 식으로 입력된 값을 stack에 넣고 빼는 과정을 <code>+</code>와 <code>-</code>로 나타내어 출력해야하는 문제이다.</p>
-<h2 id="코드"><a href="#코드" class="headerlink" title="코드"></a>코드</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.lang.StringBuffer;</span><br><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackSequence2</span> &#123;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(System.in));</span><br><span class="line">    <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">OutputStreamWriter</span>(System.out));</span><br><span class="line">    <span class="type">StringBuffer</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuffer</span>(<span class="number">20</span>);</span><br><span class="line">    Stack&lt;Integer&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;Integer&gt;();</span><br><span class="line">    <span class="type">int</span> <span class="variable">sequenceNum</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">line</span> <span class="operator">=</span> Integer.valueOf(br.readLine());</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(line-- &gt; <span class="number">0</span>) &#123;</span><br><span class="line"></span><br><span class="line">      <span class="type">int</span> <span class="variable">inputNum</span> <span class="operator">=</span> Integer.valueOf(br.readLine());</span><br><span class="line"></span><br><span class="line">      <span class="comment">// 입력받은 값이 수열보다 클 경우</span></span><br><span class="line">      <span class="keyword">if</span>(sequenceNum &lt; inputNum) &#123;</span><br><span class="line">        <span class="comment">// 수열을 해당 값까지 늘려서 stack에 저장</span></span><br><span class="line">        <span class="keyword">while</span>(sequenceNum &lt; inputNum) &#123;</span><br><span class="line">          stack.push(++sequenceNum);</span><br><span class="line">          sb.append(<span class="string">&quot;+\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 입력받은 값을 수열에서 제거</span></span><br><span class="line">        stack.pop();</span><br><span class="line">        sb.append(<span class="string">&quot;-\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 입력받은 값이 수열보다 작을 경우</span></span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="comment">// 만약 stack에 topNumber가 입력받은 값이 아니라면</span></span><br><span class="line">        <span class="keyword">if</span>(stack.peek() != inputNum) &#123;</span><br><span class="line">          bw.write(<span class="string">&quot;NO&quot;</span>);</span><br><span class="line">          bw.close();</span><br><span class="line">          <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 해당 값을 stack에서 제거</span></span><br><span class="line">        stack.pop();</span><br><span class="line">        sb.append(<span class="string">&quot;-\n&quot;</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// string 출력 및 bufferedWriter close</span></span><br><span class="line">    bw.write(sb.toString());</span><br><span class="line">    bw.close();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1512,13 +1527,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">15k</span>
+    <span title="Symbols count total">17k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">14 mins.</span>
+    <span title="Reading time total">15 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
