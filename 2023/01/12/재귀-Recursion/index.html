@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chipmunk-dev.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3038398824598758" crossorigin="anonymous"></script>
+
+    <meta name="description" content="목차 재귀 함수 재귀적 사고 예제 꼬리 재귀  재귀 함수재귀(recursion) 란 어떠한 문제가 있을 때 동일한 구조의 더 작은 문제로 나누고 작은 문제를 해결하여 전체를 해결하는 방법이다. 자바에서 메서드를 작성하면서 또 다시 자기 자신을 호출하는 재귀 함수 를 작성할 수 있는데,재귀 함수를 잘 이용하면 반복적인 작업을 간결한 코드로 작성할 수 있다">
+<meta property="og:type" content="article">
+<meta property="og:title" content="재귀(Recursion)">
+<meta property="og:url" content="https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/index.html">
+<meta property="og:site_name" content="Chipmunk Devlog">
+<meta property="og:description" content="목차 재귀 함수 재귀적 사고 예제 꼬리 재귀  재귀 함수재귀(recursion) 란 어떠한 문제가 있을 때 동일한 구조의 더 작은 문제로 나누고 작은 문제를 해결하여 전체를 해결하는 방법이다. 자바에서 메서드를 작성하면서 또 다시 자기 자신을 호출하는 재귀 함수 를 작성할 수 있는데,재귀 함수를 잘 이용하면 반복적인 작업을 간결한 코드로 작성할 수 있다">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://images.velog.io/images/usreon/post/ed6333bf-145a-468d-b94c-290fad1863a4/171965717d2506534.png">
+<meta property="article:published_time" content="2023-01-12T06:16:39.000Z">
+<meta property="article:modified_time" content="2023-01-12T12:13:27.778Z">
+<meta property="article:author" content="chipmunk">
+<meta property="article:tag" content="DataStructure">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://images.velog.io/images/usreon/post/ed6333bf-145a-468d-b94c-290fad1863a4/171965717d2506534.png">
+
+
+<link rel="canonical" href="https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/","path":"2023/01/12/재귀-Recursion/","title":"재귀(Recursion)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>재귀(Recursion) | Chipmunk Devlog</title>
+  
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10RZML3TYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-10RZML3TYR');
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chipmunk Devlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%EB%AA%A9%EC%B0%A8"><span class="nav-number">1.</span> <span class="nav-text">목차</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9E%AC%EA%B7%80-%ED%95%A8%EC%88%98"><span class="nav-number">2.</span> <span class="nav-text">재귀 함수</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%9E%AC%EA%B7%80%ED%95%A8%EC%88%98%EC%9D%98-%EC%9E%A5%EC%A0%90%EA%B3%BC-%EB%8B%A8%EC%A0%90"><span class="nav-number">2.0.1.</span> <span class="nav-text">재귀함수의 장점과 단점</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EC%9E%AC%EA%B7%80%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%82%AC%EA%B3%A0%ED%95%98%EA%B8%B0"><span class="nav-number">3.</span> <span class="nav-text">재귀적으로 사고하기</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%EB%AC%B8%EC%A0%9C%EB%A5%BC-%EC%9E%91%EA%B2%8C-%EB%82%98%EB%88%84%EA%B3%A0-%EA%B0%80%EC%9E%A5-%EC%9E%91%EC%9D%80-%EB%AC%B8%EC%A0%9C%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0-base-case"><span class="nav-number">3.0.1.</span> <span class="nav-text">문제를 작게 나누고 가장 작은 문제로 만들기(base case)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%EC%9E%AC%EA%B7%80%EC%A0%81%EC%9D%B8-%EB%B6%80%EB%B6%84%EC%9D%84-%EA%B3%A0%EB%AF%BC%ED%95%98%EA%B8%B0"><span class="nav-number">3.0.2.</span> <span class="nav-text">재귀적인 부분을 고민하기</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%EA%BC%AC%EB%A6%AC-%EC%9E%AC%EA%B7%80"><span class="nav-number">4.</span> <span class="nav-text">꼬리 재귀</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">chipmunk</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chipmunk-dev" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chipmunk-dev" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:devquokkajeong@gmail.com" title="E-Mail → mailto:devquokkajeong@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="재귀(Recursion) | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          재귀(Recursion)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-01-12 15:16:39 / Modified: 21:13:27" itemprop="dateCreated datePublished" datetime="2023-01-12T15:16:39+09:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/01/12/재귀-Recursion/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <img src="https://images.velog.io/images/usreon/post/ed6333bf-145a-468d-b94c-290fad1863a4/171965717d2506534.png" style="width: 350px; height: 300px;"/>
+
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ul>
+<li>재귀 함수</li>
+<li>재귀적 사고</li>
+<li>예제</li>
+<li>꼬리 재귀</li>
+</ul>
+<h2 id="재귀-함수"><a href="#재귀-함수" class="headerlink" title="재귀 함수"></a>재귀 함수</h2><p><code>재귀(recursion)</code> 란 어떠한 문제가 있을 때 동일한 구조의 더 작은 문제로 나누고 작은 문제를 해결하여 전체를 해결하는 방법이다.</p>
+<p>자바에서 메서드를 작성하면서 또 다시 자기 자신을 호출하는 <code>재귀 함수</code> 를 작성할 수 있는데,<br>재귀 함수를 잘 이용하면 반복적인 작업을 간결한 코드로 작성할 수 있다.</p>
+<h4 id="재귀함수의-장점과-단점"><a href="#재귀함수의-장점과-단점" class="headerlink" title="재귀함수의 장점과 단점"></a>재귀함수의 장점과 단점</h4><p>(장점)</p>
+<ul>
+<li>반복문 중첩을 사용하는 대신 코드가 간결해지고, 수정이 간편하다.</li>
+<li>변수를 적게 선언하여 사용할 수 있다.</li>
+</ul>
+<p>(단점)</p>
+<ul>
+<li>코드의 흐름을 반복문보다 파악하기 어렵다.</li>
+<li>재귀 함수는 함수가 끝나기 전에 자기자신을 반복적으로 호출하기에 메모리를 더 많이 사용한다.</li>
+<li>함수 호출과 함수 복귀를 위한 context switching 비용이 발생하고, 속도가 상대적으로 느린편이다.</li>
+<li>고려하지 못한 에지케이스가 있어 무한반복이 발생하면 프로그램이 터진다..</li>
+</ul>
+<p>이런 성능적인 단점은 <code>꼬리 재귀</code> 로 보완이 가능하다. 이 내용은 제일 아래에 정리하겠다.</p>
+<h2 id="재귀적으로-사고하기"><a href="#재귀적으로-사고하기" class="headerlink" title="재귀적으로 사고하기"></a>재귀적으로 사고하기</h2><p>하나의 문제를 재귀적으로 해결하는 방법을 알아보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">정수로 이루어진 정수형 배열이 있고, 그 배열의 합을 구하라</span><br></pre></td></tr></table></figure>
+
+<p>위와 같은 문제가 있다고 하고, 이를 재귀적으로 생각해보자.</p>
+<h4 id="문제를-작게-나누고-가장-작은-문제로-만들기-base-case"><a href="#문제를-작게-나누고-가장-작은-문제로-만들기-base-case" class="headerlink" title="문제를 작게 나누고 가장 작은 문제로 만들기(base case)"></a>문제를 작게 나누고 가장 작은 문제로 만들기(base case)</h4><p>입력값을 예시로 [1, 2, 3, 4, 5] 값이 들어온다고 가정하자.<br>이를 어떤방식으로 작게 생각할까?<br>예를 들어 인자가 5개가 아니라 4개라면?<br>[1, 2, 3, 4, 5]가 아니라 [2, 3, 4, 5]가 좀 더 작은 문제가 될 것이다.<br>그리고 [2, 3, 4, 5] 보다는 [3, 4, 5]가 더 작고 결국 [] 빈 배열일 경우가 제일 작은 경우다.<br>빈 배열은 요소가 없으니 합은 0이된다.<br>이 처럼 제일 작은 문제가 정의되었을 때 이를 재귀에서는 탈출조건(base case)라고 한다.<br>이 base case에 만족하면 더이상 재귀적인 호출은 없고 다시 최초 호출시점으로 값을 반환시작한다.<br>이를 코드로 작성한다면</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">arraySum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">	<span class="comment">// base case</span></span><br><span class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 될것이다.</p>
+<h4 id="재귀적인-부분을-고민하기"><a href="#재귀적인-부분을-고민하기" class="headerlink" title="재귀적인 부분을 고민하기"></a>재귀적인 부분을 고민하기</h4><p>자 그렇다면 제일 작은케이스를 구하였지만, 해당 케이스를 어떻게 해결하면 좋을까?<br>작은 케이스를 해결하게 되면 큰 문제는 쉽게 해결할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5] 가 있을 경우 전체합을 구하기 전에 간단하게 생각해보자</span><br><span class="line">1을 기준으로 [2, 3, 4, 5]의 합을 알고있으면 여기에 1만 더해주면 된다.</span><br><span class="line">2를 기준으로 [3, 4, 5]의 합을 알고있다면 여기에 2만 더해주면 된다.</span><br><span class="line">3을 기준으로 [4, 5]의 합을 알고있다면 여기에 3을 더해주면 된다.</span><br><span class="line">4를 기준으로 [5]의 합을 알고있다면 여기에 4를 더해주면된다.</span><br><span class="line">5를 기준으로 5가 마지막요소기에 5는 그냥 5이다.</span><br><span class="line"></span><br><span class="line">이를 표현한다면</span><br><span class="line">[1,2,3,4,5] &gt; 1+[2,3,4,5]</span><br><span class="line">		[2,3,4,5] &gt; 2+[3,4,5]</span><br><span class="line">					[3,4,5] &gt; 3+[4,5]</span><br><span class="line">								[4,5] &gt; 4+[5]</span><br><span class="line">										[5] &gt; 5+[] // baseCase</span><br></pre></td></tr></table></figure>
+
+<p>위 처럼 첫번째 요소를 뺀 배열을 다시 재귀함수의 인자로 호출하는 것이다.<br>이렇게 나누다보면 탈출 조건(base case)에 도달할 것이고 반환값들이 최상위 호출위치까지 돌아올 것이다.<br>이를 코드로 작성해보면</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">arraySum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">	<span class="comment">// base case</span></span><br><span class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// recursion</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">head</span> <span class="operator">=</span> arr[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span>[] tail = Arrays.copyOfRange(arr, <span class="number">1</span>, arr.length); <span class="comment">//배열 0을 제외한 1번부터 카피</span></span><br><span class="line">	<span class="keyword">return</span> head + arraySum(tail); <span class="comment">//재귀 호출</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 탈출 조건(base case)와 재귀 호출부분(recursion)으로 나눌 수 있다.<br>arraySum메서드 내부에서 크기를 자른 작은 arr를 다시 arraySum의 인자로 넘기며 호출한다.<br>이를 통해 문제가 점점 작은단위로 쪼개지고, 제일 작은 단위의 문제로 쪼개졌을 때 이를 해결하고<br>해결된 문제와 그 다음 작은 문제롤 통합하여 해결하고 해결하고.. 이런식으로 큰 문제를 해결할 수있다.</p>
+<p>정리하자면</p>
+<ol>
+<li>함수의 입력값이 무엇이고 출력값이 어떻게 되는지 고민하기</li>
+<li>문제를 작게 쪼개고 쪼개서 가장 작은 단위의 문제를 정의하기</li>
+<li>작은 단위의 문제를 해결하기</li>
+<li>작은 단위의 문제를 해결함으로써 남아있는 복잡한 문제를 해결하기</li>
+<li>코드 테스트하기</li>
+</ol>
+<h2 id="꼬리-재귀"><a href="#꼬리-재귀" class="headerlink" title="꼬리 재귀"></a>꼬리 재귀</h2><blockquote>
+<p>꼬리재귀란?<br> 재귀는 좋은 이점이 많아 자주 사용되지만 성능적으로 부족하다.<br> 재귀의 장점은 살리면서 단점을 보완하는 방법 중 하나가 꼬리 재귀이다.<br> 재귀를 작성하다보면 반환할 때 연산을 하여 반환하는 경우가 많다.<br> 재귀 호출이 끝나면 아무 일도 하지 않고 결과만 바로 반환하도록 하는게 꼬리 재귀의 포인트다.<br> 이렇게 되면 이전 함수의 상태를 유지하지 않고 추가 연산을 하지도 않아 오버헤드를 해결할 수 있다.</p>
+</blockquote>
+<p>재귀하면 대표적인 예시로 사용되는 팩토리얼을 작성해보자.</p>
+<p><strong>일반 재귀 방식</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>인자값으로 5가 들어온다면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">factorial(5)</span><br><span class="line">-&gt; 5 * factorial(4)</span><br><span class="line">  -&gt; 4 * factorial(3)</span><br><span class="line">    -&gt; 3 * factorial(2)</span><br><span class="line">      -&gt; 2 * factorial(1)  =&gt; 여기까지 스택에 함수가 쌓이게 된다.</span><br><span class="line">      &lt;- 2 * 1</span><br><span class="line">    &lt;- 3 * 2</span><br><span class="line">  &lt;- 4 * 6</span><br><span class="line">&lt;- 5 * 24</span><br></pre></td></tr></table></figure>
+<p>기본적으로 함수가 재귀 함수를 호출하고, 그 결과값을 자기가 가지고 있던 값과 곱셈을 하여 다시 반환하는 그림을 가지고 있다.</p>
+<p><strong>꼬리 재귀 방식</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> acc)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> acc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> factorial(n-<span class="number">1</span>, n * acc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>return 부분을 보면 재귀 호출을 하되 호출을 완료한 재귀함수가 다른 연산없이 바로 리턴하는것을 볼 수 있다.</p>
+<p>인자값으로 5가 들어온다면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">factorial(5, 1)</span><br><span class="line">-&gt; factorial(4, 5)</span><br><span class="line">  -&gt; factorial(3, 20)</span><br><span class="line">    -&gt; factorial(2, 60)</span><br><span class="line">      -&gt; factorial(1, 120)</span><br><span class="line">      &lt;- 120</span><br><span class="line">	&lt;- 120</span><br><span class="line">  &lt;- 120</span><br><span class="line">&lt;- 120</span><br></pre></td></tr></table></figure>
+<p>반환 부분을 본다면 마지막에 계산된 120이라는 acc값이 <strong>그대로 전달</strong>된다.<br>호출된 각 함수들이 반환되었을 때 별도의 <strong>연산없이</strong> 바로 전달한다.</p>
+<p><strong>일반 재귀</strong>는 값을 반환 받았을 때 해당 값에 다른 연산을 하고 다시 다른 함수에 전달해준다.<br><strong>꼬리 재귀</strong>는 값을 반환 받으면 <strong>아무것도 하지 않고</strong> 그대로 반환한다.</p>
+<p>위의 차이점을 보았을 때 일반 재귀는 함수의 값을 반환받고 그 값을 다른 값과 연산을 해야하는 과정이 남아있기에 <strong>자기 자리를 기억</strong>해야한다. 그래서 스택에 해당 함수가 쌓일 때 함수가 받는 매개변수, 리턴값, 돌아갈 위치(자기 자리)를 기억한다.<br>하지만 꼬리 재귀는 반환값에 따로 연산이 없으니 <strong>자기 자리를 기억하지 않아도 된다</strong>.</p>
+<blockquote>
+<p>참고!<br>꼬리재귀는 사용하는 언어의 컴파일러가 지원해야 이점이 있음<br>컴파일러가 지원하지 않으면 일반 재귀와 같은 효율을 보인다.<br>Java는 꼬리 재귀 최적화를 지원하지 않는다(but.. 방법이 있음)<br><a target="_blank" rel="noopener" href="https://blog.knoldus.com/tail-recursion-in-java-8/">예시 링크</a> 영어로 되어있는 게시글이지만 자바의 람다를 이용하여 꼬리 재귀와 비슷하게 적용한다고 하니<br>궁금하면 들어가서 확인해보자!</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chipmunk
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/" title="재귀(Recursion)">https://chipmunk-dev.github.io/2023/01/12/재귀-Recursion/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/DataStructure/" rel="tag"># DataStructure</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/12/16/computer-programming-understanding/" rel="prev" title="컴퓨터 프로그래밍과 이해">
+                  <i class="fa fa-chevron-left"></i> 컴퓨터 프로그래밍과 이해
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2022. Chipmunk. All rights reserved.</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">28k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">25 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"chipmunk-devlog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

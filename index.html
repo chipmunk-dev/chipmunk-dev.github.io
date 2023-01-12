@@ -136,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,180 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/" class="post-title-link" itemprop="url">재귀(Recursion)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-01-12 15:16:39 / Modified: 21:13:27" itemprop="dateCreated datePublished" datetime="2023-01-12T15:16:39+09:00">2023-01-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Algorithm/" itemprop="url" rel="index"><span itemprop="name">Algorithm</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2023/01/12/%EC%9E%AC%EA%B7%80-Recursion/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/01/12/재귀-Recursion/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>3.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>3 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <img src="https://images.velog.io/images/usreon/post/ed6333bf-145a-468d-b94c-290fad1863a4/171965717d2506534.png" style="width: 350px; height: 300px;"/>
+
+<h2 id="목차"><a href="#목차" class="headerlink" title="목차"></a>목차</h2><ul>
+<li>재귀 함수</li>
+<li>재귀적 사고</li>
+<li>예제</li>
+<li>꼬리 재귀</li>
+</ul>
+<h2 id="재귀-함수"><a href="#재귀-함수" class="headerlink" title="재귀 함수"></a>재귀 함수</h2><p><code>재귀(recursion)</code> 란 어떠한 문제가 있을 때 동일한 구조의 더 작은 문제로 나누고 작은 문제를 해결하여 전체를 해결하는 방법이다.</p>
+<p>자바에서 메서드를 작성하면서 또 다시 자기 자신을 호출하는 <code>재귀 함수</code> 를 작성할 수 있는데,<br>재귀 함수를 잘 이용하면 반복적인 작업을 간결한 코드로 작성할 수 있다.</p>
+<h4 id="재귀함수의-장점과-단점"><a href="#재귀함수의-장점과-단점" class="headerlink" title="재귀함수의 장점과 단점"></a>재귀함수의 장점과 단점</h4><p>(장점)</p>
+<ul>
+<li>반복문 중첩을 사용하는 대신 코드가 간결해지고, 수정이 간편하다.</li>
+<li>변수를 적게 선언하여 사용할 수 있다.</li>
+</ul>
+<p>(단점)</p>
+<ul>
+<li>코드의 흐름을 반복문보다 파악하기 어렵다.</li>
+<li>재귀 함수는 함수가 끝나기 전에 자기자신을 반복적으로 호출하기에 메모리를 더 많이 사용한다.</li>
+<li>함수 호출과 함수 복귀를 위한 context switching 비용이 발생하고, 속도가 상대적으로 느린편이다.</li>
+<li>고려하지 못한 에지케이스가 있어 무한반복이 발생하면 프로그램이 터진다..</li>
+</ul>
+<p>이런 성능적인 단점은 <code>꼬리 재귀</code> 로 보완이 가능하다. 이 내용은 제일 아래에 정리하겠다.</p>
+<h2 id="재귀적으로-사고하기"><a href="#재귀적으로-사고하기" class="headerlink" title="재귀적으로 사고하기"></a>재귀적으로 사고하기</h2><p>하나의 문제를 재귀적으로 해결하는 방법을 알아보자.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">정수로 이루어진 정수형 배열이 있고, 그 배열의 합을 구하라</span><br></pre></td></tr></table></figure>
+
+<p>위와 같은 문제가 있다고 하고, 이를 재귀적으로 생각해보자.</p>
+<h4 id="문제를-작게-나누고-가장-작은-문제로-만들기-base-case"><a href="#문제를-작게-나누고-가장-작은-문제로-만들기-base-case" class="headerlink" title="문제를 작게 나누고 가장 작은 문제로 만들기(base case)"></a>문제를 작게 나누고 가장 작은 문제로 만들기(base case)</h4><p>입력값을 예시로 [1, 2, 3, 4, 5] 값이 들어온다고 가정하자.<br>이를 어떤방식으로 작게 생각할까?<br>예를 들어 인자가 5개가 아니라 4개라면?<br>[1, 2, 3, 4, 5]가 아니라 [2, 3, 4, 5]가 좀 더 작은 문제가 될 것이다.<br>그리고 [2, 3, 4, 5] 보다는 [3, 4, 5]가 더 작고 결국 [] 빈 배열일 경우가 제일 작은 경우다.<br>빈 배열은 요소가 없으니 합은 0이된다.<br>이 처럼 제일 작은 문제가 정의되었을 때 이를 재귀에서는 탈출조건(base case)라고 한다.<br>이 base case에 만족하면 더이상 재귀적인 호출은 없고 다시 최초 호출시점으로 값을 반환시작한다.<br>이를 코드로 작성한다면</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">arraySum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">	<span class="comment">// base case</span></span><br><span class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이렇게 될것이다.</p>
+<h4 id="재귀적인-부분을-고민하기"><a href="#재귀적인-부분을-고민하기" class="headerlink" title="재귀적인 부분을 고민하기"></a>재귀적인 부분을 고민하기</h4><p>자 그렇다면 제일 작은케이스를 구하였지만, 해당 케이스를 어떻게 해결하면 좋을까?<br>작은 케이스를 해결하게 되면 큰 문제는 쉽게 해결할 수 있다.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3, 4, 5] 가 있을 경우 전체합을 구하기 전에 간단하게 생각해보자</span><br><span class="line">1을 기준으로 [2, 3, 4, 5]의 합을 알고있으면 여기에 1만 더해주면 된다.</span><br><span class="line">2를 기준으로 [3, 4, 5]의 합을 알고있다면 여기에 2만 더해주면 된다.</span><br><span class="line">3을 기준으로 [4, 5]의 합을 알고있다면 여기에 3을 더해주면 된다.</span><br><span class="line">4를 기준으로 [5]의 합을 알고있다면 여기에 4를 더해주면된다.</span><br><span class="line">5를 기준으로 5가 마지막요소기에 5는 그냥 5이다.</span><br><span class="line"></span><br><span class="line">이를 표현한다면</span><br><span class="line">[1,2,3,4,5] &gt; 1+[2,3,4,5]</span><br><span class="line">		[2,3,4,5] &gt; 2+[3,4,5]</span><br><span class="line">					[3,4,5] &gt; 3+[4,5]</span><br><span class="line">								[4,5] &gt; 4+[5]</span><br><span class="line">										[5] &gt; 5+[] // baseCase</span><br></pre></td></tr></table></figure>
+
+<p>위 처럼 첫번째 요소를 뺀 배열을 다시 재귀함수의 인자로 호출하는 것이다.<br>이렇게 나누다보면 탈출 조건(base case)에 도달할 것이고 반환값들이 최상위 호출위치까지 돌아올 것이다.<br>이를 코드로 작성해보면</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">arraySum</span><span class="params">(<span class="type">int</span>[] arr)</span> &#123;</span><br><span class="line">	<span class="comment">// base case</span></span><br><span class="line">	<span class="keyword">if</span>(arr.length == <span class="number">0</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// recursion</span></span><br><span class="line">	<span class="type">int</span> <span class="variable">head</span> <span class="operator">=</span> arr[<span class="number">0</span>];</span><br><span class="line">	<span class="type">int</span>[] tail = Arrays.copyOfRange(arr, <span class="number">1</span>, arr.length); <span class="comment">//배열 0을 제외한 1번부터 카피</span></span><br><span class="line">	<span class="keyword">return</span> head + arraySum(tail); <span class="comment">//재귀 호출</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>위와 같이 탈출 조건(base case)와 재귀 호출부분(recursion)으로 나눌 수 있다.<br>arraySum메서드 내부에서 크기를 자른 작은 arr를 다시 arraySum의 인자로 넘기며 호출한다.<br>이를 통해 문제가 점점 작은단위로 쪼개지고, 제일 작은 단위의 문제로 쪼개졌을 때 이를 해결하고<br>해결된 문제와 그 다음 작은 문제롤 통합하여 해결하고 해결하고.. 이런식으로 큰 문제를 해결할 수있다.</p>
+<p>정리하자면</p>
+<ol>
+<li>함수의 입력값이 무엇이고 출력값이 어떻게 되는지 고민하기</li>
+<li>문제를 작게 쪼개고 쪼개서 가장 작은 단위의 문제를 정의하기</li>
+<li>작은 단위의 문제를 해결하기</li>
+<li>작은 단위의 문제를 해결함으로써 남아있는 복잡한 문제를 해결하기</li>
+<li>코드 테스트하기</li>
+</ol>
+<h2 id="꼬리-재귀"><a href="#꼬리-재귀" class="headerlink" title="꼬리 재귀"></a>꼬리 재귀</h2><blockquote>
+<p>꼬리재귀란?<br> 재귀는 좋은 이점이 많아 자주 사용되지만 성능적으로 부족하다.<br> 재귀의 장점은 살리면서 단점을 보완하는 방법 중 하나가 꼬리 재귀이다.<br> 재귀를 작성하다보면 반환할 때 연산을 하여 반환하는 경우가 많다.<br> 재귀 호출이 끝나면 아무 일도 하지 않고 결과만 바로 반환하도록 하는게 꼬리 재귀의 포인트다.<br> 이렇게 되면 이전 함수의 상태를 유지하지 않고 추가 연산을 하지도 않아 오버헤드를 해결할 수 있다.</p>
+</blockquote>
+<p>재귀하면 대표적인 예시로 사용되는 팩토리얼을 작성해보자.</p>
+<p><strong>일반 재귀 방식</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (n == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> n * factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>인자값으로 5가 들어온다면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">factorial(5)</span><br><span class="line">-&gt; 5 * factorial(4)</span><br><span class="line">  -&gt; 4 * factorial(3)</span><br><span class="line">    -&gt; 3 * factorial(2)</span><br><span class="line">      -&gt; 2 * factorial(1)  =&gt; 여기까지 스택에 함수가 쌓이게 된다.</span><br><span class="line">      &lt;- 2 * 1</span><br><span class="line">    &lt;- 3 * 2</span><br><span class="line">  &lt;- 4 * 6</span><br><span class="line">&lt;- 5 * 24</span><br></pre></td></tr></table></figure>
+<p>기본적으로 함수가 재귀 함수를 호출하고, 그 결과값을 자기가 가지고 있던 값과 곱셈을 하여 다시 반환하는 그림을 가지고 있다.</p>
+<p><strong>꼬리 재귀 방식</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="type">int</span> <span class="title function_">factorial</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> acc)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span>(n == <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> acc;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> factorial(n-<span class="number">1</span>, n * acc);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>return 부분을 보면 재귀 호출을 하되 호출을 완료한 재귀함수가 다른 연산없이 바로 리턴하는것을 볼 수 있다.</p>
+<p>인자값으로 5가 들어온다면</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">factorial(5, 1)</span><br><span class="line">-&gt; factorial(4, 5)</span><br><span class="line">  -&gt; factorial(3, 20)</span><br><span class="line">    -&gt; factorial(2, 60)</span><br><span class="line">      -&gt; factorial(1, 120)</span><br><span class="line">      &lt;- 120</span><br><span class="line">	&lt;- 120</span><br><span class="line">  &lt;- 120</span><br><span class="line">&lt;- 120</span><br></pre></td></tr></table></figure>
+<p>반환 부분을 본다면 마지막에 계산된 120이라는 acc값이 <strong>그대로 전달</strong>된다.<br>호출된 각 함수들이 반환되었을 때 별도의 <strong>연산없이</strong> 바로 전달한다.</p>
+<p><strong>일반 재귀</strong>는 값을 반환 받았을 때 해당 값에 다른 연산을 하고 다시 다른 함수에 전달해준다.<br><strong>꼬리 재귀</strong>는 값을 반환 받으면 <strong>아무것도 하지 않고</strong> 그대로 반환한다.</p>
+<p>위의 차이점을 보았을 때 일반 재귀는 함수의 값을 반환받고 그 값을 다른 값과 연산을 해야하는 과정이 남아있기에 <strong>자기 자리를 기억</strong>해야한다. 그래서 스택에 해당 함수가 쌓일 때 함수가 받는 매개변수, 리턴값, 돌아갈 위치(자기 자리)를 기억한다.<br>하지만 꼬리 재귀는 반환값에 따로 연산이 없으니 <strong>자기 자리를 기억하지 않아도 된다</strong>.</p>
+<blockquote>
+<p>참고!<br>꼬리재귀는 사용하는 언어의 컴파일러가 지원해야 이점이 있음<br>컴파일러가 지원하지 않으면 일반 재귀와 같은 효율을 보인다.<br>Java는 꼬리 재귀 최적화를 지원하지 않는다(but.. 방법이 있음)<br><a target="_blank" rel="noopener" href="https://blog.knoldus.com/tail-recursion-in-java-8/">예시 링크</a> 영어로 되어있는 게시글이지만 자바의 람다를 이용하여 꼬리 재귀와 비슷하게 적용한다고 하니<br>궁금하면 들어가서 확인해보자!</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1474,121 +1648,8 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/18/jjandi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chipmunk">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/18/jjandi/" class="post-title-link" itemprop="url">Github 잔디가 안심어져...</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-      
-
-      <time title="Created: 2022-09-18 21:03:45 / Modified: 21:13:04" itemprop="dateCreated datePublished" datetime="2022-09-18T21:03:45+09:00">2022-09-18</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Git/" itemprop="url" rel="index"><span itemprop="name">Git</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/09/18/jjandi/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/18/jjandi/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>177</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>최근 작업한 내용을 remote repository에 push를 했는데…<br>잔디가 안심어진다!!</p>
-<p>무엇이 문제일꼬…<br>이유를 찾으니 정말 간단했다.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --list</span><br></pre></td></tr></table></figure>
-
-<p>명령어를 통하여 <code>user.email</code>이 잘 입력되어있는지 확인해보니<br>오타 gmail을 gamil… 이거 분명 최우영님이 조심하라 했던건데… -,.-</p>
-<p>정확한 메일 주소로 수정 후 push하니 잔디가 잘 심어진다..!</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 </div>
@@ -1599,8 +1660,8 @@
 
 
 <div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -1611,13 +1672,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">25k</span>
+    <span title="Symbols count total">28k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">22 mins.</span>
+    <span title="Reading time total">25 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
