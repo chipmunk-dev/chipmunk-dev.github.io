@@ -136,7 +136,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -147,7 +147,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-count">22</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -187,6 +187,159 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2023/01/25/JAVA-SOLID/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2023/01/25/JAVA-SOLID/" class="post-title-link" itemprop="url">객체지향 설계 5원칙 SOLID</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-01-25 20:50:47 / Modified: 22:01:26" itemprop="dateCreated datePublished" datetime="2023-01-25T20:50:47+09:00">2023-01-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%EC%9E%90%EB%B0%94/" itemprop="url" rel="index"><span itemprop="name">자바</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2023/01/25/JAVA-SOLID/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/01/25/JAVA-SOLID/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>5.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>SOLID 원칙은 Robert C.Martin이 도입한 일련의 객체지향 설계원칙이다.</p>
+<h2 id="SRP-Single-Reponsibility-Principle-단일-책임-원"><a href="#SRP-Single-Reponsibility-Principle-단일-책임-원" class="headerlink" title="SRP (Single Reponsibility Principle) 단일 책임 원"></a>SRP (Single Reponsibility Principle) 단일 책임 원</h2><p>하나의 클래스는 하나의 책임을 가져야한다.</p>
+<p>bad example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FileLogger</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">log</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="comment">// 로그를 파일에 작성하는 코드</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendEmail</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="comment">// 이메일을 보내는 코드</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>FileLogger</code>클래스는 파일에 고르 메시지를 작성하고 이메일을 보내는 두가지 책임이 있다.<br>이는 하나의 클래스는 하나의 책임을 가져야하는것을 위반한다.</p>
+<p>good example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FileLogger</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">log</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="comment">// 로그를 파일에 작성하는 코드</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Email</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">sendEmail</span><span class="params">(String message)</span> &#123;</span><br><span class="line">        <span class="comment">// 이메일을 보내는 코드</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="OCP-Open-x2F-Closed-Principle-개방-x2F-폐쇄-원칙"><a href="#OCP-Open-x2F-Closed-Principle-개방-x2F-폐쇄-원칙" class="headerlink" title="OCP (Open&#x2F;Closed Principle) 개방&#x2F;폐쇄 원칙"></a>OCP (Open&#x2F;Closed Principle) 개방&#x2F;폐쇄 원칙</h2><p>클래스는 확장에는 열려 있어야 하지만 수정에는 닫혀있어야 한다.<br>즉, 클래스는 기존 코드를 수정하지 않고도 새로운 기능을 추가할 수 있는 방식으로 설계되어야 한다.</p>
+<p>bad example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ShapeCalculator</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">calculateCircleArea</span><span class="params">(<span class="type">double</span> radius)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> Math.PI * radius * radius;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">calculateRectangleArea</span><span class="params">(<span class="type">double</span> width, <span class="type">double</span> height)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> width * height;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>ShapeCalculator</code>클래스를 보면 원형과 사각형의 넓이를 구하는 메서드가 있다.<br>여기서 새 모양(예: 오각형)을 구하기위한 새로은 클래스로 확장하기가 쉽지 않으며 기존 클래스를 수정해야한다.</p>
+<p>good example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line">    <span class="type">double</span> <span class="title function_">calculateArea</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Circle</span> <span class="keyword">implements</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line">    <span class="type">double</span> radius;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Circle</span><span class="params">(<span class="type">double</span> radius)</span> &#123; <span class="built_in">this</span>.radius = radius; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">calculateArea</span><span class="params">()</span> &#123; <span class="keyword">return</span> Math.PI * radius * radius; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> <span class="keyword">implements</span> <span class="title class_">Shape</span> &#123;</span><br><span class="line">    <span class="type">double</span> width;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">double</span> width, <span class="type">double</span> height)</span> &#123; <span class="built_in">this</span>.width = width; <span class="built_in">this</span>.height = height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">calculateArea</span><span class="params">()</span> &#123; <span class="keyword">return</span> width * height; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Shape</code>라는 인터페이스를 생성하고 이를 구현하는 도형 클래스를 만들어 확장할 수 있도록 한다.<br>이는 인터페이스를 통하여 구현함으로써 확장에는 열려있지만 기존 인터페이스를 수정할 필요가 없다.</p>
+<h2 id="LSP-Liskov-Substitution-Principle-리스코프-치환-원칙"><a href="#LSP-Liskov-Substitution-Principle-리스코프-치환-원칙" class="headerlink" title="LSP (Liskov Substitution Principle) 리스코프 치환 원칙"></a>LSP (Liskov Substitution Principle) 리스코프 치환 원칙</h2><p>하위 유형의 타입은 기본 유형을 대채할 수 있어야 한다.<br>즉, 프로그램의 정확성에 영향을 주지 않고 상위 클래스의 개체를 하위 클래스의 개체로 대체할 수 있어야 한다.</p>
+<p>bad example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="type">double</span> width;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">double</span> width, <span class="type">double</span> height)</span> &#123; <span class="built_in">this</span>.width = width; <span class="built_in">this</span>.height = height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getWidth</span><span class="params">()</span> &#123; <span class="keyword">return</span> width; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWidth</span><span class="params">(<span class="type">double</span> width)</span> &#123; <span class="built_in">this</span>.width = width; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getHeight</span><span class="params">()</span> &#123; <span class="keyword">return</span> height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHeight</span><span class="params">(<span class="type">double</span> height)</span> &#123; <span class="built_in">this</span>.height = height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123; <span class="keyword">return</span> width * height; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">extends</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Square</span><span class="params">(<span class="type">double</span> side)</span> &#123; <span class="built_in">super</span>(side, side); &#125;</span><br><span class="line">    <span class="meta">@Override</span> <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123; <span class="keyword">return</span> <span class="built_in">super</span>.getWidth() * <span class="built_in">super</span>.getWidth(); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제에서 <code>Square</code>클래스는 <code>Rectangle</code> 클래스를 확장하고 <code>getArea</code> 메서드를 재정의하여 사각형과 다른 사각형의 면적을 반환한다.<br>이는 다른 면적 계산을 반환하므로 객체를 <code>Square</code> 객체로 사용할 수 없기 때문에 LSP를 깨드린다.</p>
+<p>good example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="type">double</span> width;</span><br><span class="line">    <span class="type">double</span> height;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Rectangle</span><span class="params">(<span class="type">double</span> width, <span class="type">double</span> height)</span> &#123; <span class="built_in">this</span>.width = width; <span class="built_in">this</span>.height = height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getWidth</span><span class="params">()</span> &#123; <span class="keyword">return</span> width; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWidth</span><span class="params">(<span class="type">double</span> width)</span> &#123; <span class="built_in">this</span>.width = width; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getHeight</span><span class="params">()</span> &#123; <span class="keyword">return</span> height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHeight</span><span class="params">(<span class="type">double</span> height)</span> &#123; <span class="built_in">this</span>.height = height; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">double</span> <span class="title function_">getArea</span><span class="params">()</span> &#123; <span class="keyword">return</span> width * height; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Square</span> <span class="keyword">extends</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Square</span><span class="params">(<span class="type">double</span> side)</span> &#123; <span class="built_in">super</span>(side, side); &#125;</span><br><span class="line">    <span class="meta">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setWidth</span><span class="params">(<span class="type">double</span> width)</span> &#123; <span class="built_in">super</span>.setWidth(width); <span class="built_in">super</span>.setHeight(width); &#125;</span><br><span class="line">    <span class="meta">@Override</span> <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setHeight</span><span class="params">(<span class="type">double</span> height)</span> &#123; <span class="built_in">super</span>.setHeight(height); <span class="built_in">super</span>.setWidth(height); &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Square</code>클래스는 <code>Rectangle</code> 클래스를 확장하고 <code>setWidth</code> 와 <code>setHeight</code> 메서드를 재정의하여<br>너비와 높이가 항상 동일하도록 하여 영향을 주지 않고 <code>Rectangle</code> 클래스를 대체할 수 있도록 한다.</p>
+<h2 id="ISP-Interface-Segregation-Principle-인터페이스-분리-원칙"><a href="#ISP-Interface-Segregation-Principle-인터페이스-분리-원칙" class="headerlink" title="ISP (Interface Segregation Principle) 인터페이스 분리 원칙"></a>ISP (Interface Segregation Principle) 인터페이스 분리 원칙</h2><p>클래스는 사용하지 않는 인터페이스를 구현하도록 강요해서는 안된다.<br>클래스가 인터페이스에서 불필요한 메서드를 구현하도록 강요해서는 안되는 것이다.<br>즉, 여러가지 기능을하는 범용 인터페이스 보다는 각각의 일을 하는 여러개의 분리된 인터페이스가 좋다.</p>
+<p>bad example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">fly</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Eagle</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fly</span><span class="params">()</span> &#123; <span class="comment">/* 대충 나는 코드 */</span> &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span> &#123; <span class="comment">/* 대충 수영하는 코드 */</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Fish</span> <span class="keyword">implements</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fly</span><span class="params">()</span> &#123; <span class="comment">/* 대충 나는 코드 */</span> &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span> &#123; <span class="comment">/* 대충 수영하는 코드 */</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이는 <code>Eagle</code>클래스에는 필요하지 않는 경우에도 <code>swim</code>메서드 구현해야 한다.<br>반대로 <code>Fish</code>클래스에는 <code>fly</code>메서드를 구현해야한다.<br>이는 클래스가 불필요한 메소드를 구현하도록 강제하기에 ISP를 위반한다.</p>
+<p>good example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Flyable</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">fly</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">Swimmable</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Eagle</span> <span class="keyword">implements</span> <span class="title class_">Flyable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">fly</span><span class="params">()</span> &#123; <span class="comment">/* 대충 나 코드 */</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Fish</span> <span class="keyword">implements</span> <span class="title class_">Swimmable</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swim</span><span class="params">()</span> &#123; <span class="comment">/* 대충 수영하는 코드 */</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>이 예제에서 <code>Eagle</code> 클래스는 <code>Flyable</code>만 구현하여 필요한 <code>fly</code>만 재정의 하고,<br><code>Fish</code> 클래스는 <code>Swimmable</code>만 구현하여 <code>swim</code>만 재정의 하면 된다.<br>즉, 불필요한 메서드를 강제로 구현하지 않는다.</p>
+<h2 id="DIP-Dependency-Inversion-Principle-의존관계-역전-원칙"><a href="#DIP-Dependency-Inversion-Principle-의존관계-역전-원칙" class="headerlink" title="DIP (Dependency Inversion Principle) 의존관계 역전 원칙"></a>DIP (Dependency Inversion Principle) 의존관계 역전 원칙</h2><p>고수준의 모듈(클래스)는 낮은 수준의 코듈(클래스)에 의존해서는 안되며 둘 다 추상화에 의존해야 한다.<br>즉, 인터페이스와 같은 추상화에 의존해야지 구체화에 의존하면 안된다.</p>
+<p>bad example</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> V6Engine engine;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Car</span><span class="params">()</span> &#123; engine = <span class="keyword">new</span> <span class="title class_">V6Engine</span>(); &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123; engine.start(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">V6Engine</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123; <span class="comment">/* V6 엔진 작동시키는 코드 */</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>Car</code>클래스는 구현 클래스인 <code>V6Engine</code> 클래스에 직접적으로 의존한다.<br>이로 인해 <code>Car</code>클래스가 <code>V6Engine</code>클래스에 밀접하게 결합되어 <code>Car</code>클래스에 영향(수정)을 미치지 않고 엔진 유형을 변경하기 힘들다.<br>또한 상위 수준 클래스(Car클래스)가 하위 수준 클래스(V6Engine클래스)에 종속되므로 DIP를 위반한다.</p>
+<p>good example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> <span class="title class_">Engine</span> &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Car</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> Engine engine;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Car</span><span class="params">(Engine engine)</span> &#123; <span class="built_in">this</span>.engine = engine; &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123; engine.start(); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">V6Engine</span> <span class="keyword">implements</span> <span class="title class_">Engine</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">start</span><span class="params">()</span> &#123; <span class="comment">/* code to start V6 engine */</span> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>위 예제에서 <code>Car</code>클래스는 <code>Engine</code>클래스에 의존한다.<br>즉, 구현체를 의존하는것이 아닌 추상화인 <code>Engine</code>클래스를 의존한다.<br>이렇게 되면 <code>Car</code>클래스에 영향을 주지 않고 <code>Engine</code>인터페이스를 구현하는 다양한 클래스를 사용할 수 있다.</p>
+<h2 id="정리하며"><a href="#정리하며" class="headerlink" title="정리하며"></a>정리하며</h2><p>이러한 SOLID 원칙은 유지 관리 가능하고 유연한 객체 지향 소프트웨어를 설계하는데 도움이 될 수 있다.<br>그러나 이러한 원칙은 모든경우에 무조건 적용되는 솔루션이 아니며 상황에 따라 올바른 판단을 가지고 적용해야한다.<br>참고로 자바를 위 5가지 원칙을 지키며 개발하려고하면 결국 <code>Spring Framwork</code>를 본인이 만들게 될것이다.<br>스프링이 제공하는 코어 기능들이 위 원칙들을 지키기 위한 기능이라고 볼 수 있다(물론 스프링은 다른 기능도 너무 많다..)</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1581,192 +1734,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/19/floatingNumber/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="chipmunk">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Chipmunk Devlog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/09/19/floatingNumber/" class="post-title-link" itemprop="url">실수의 2진수 표현에 대하여</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2022-09-19 16:24:30" itemprop="dateCreated datePublished" datetime="2022-09-19T16:24:30+09:00">2022-09-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-01-16 14:30:17" itemprop="dateModified" datetime="2023-01-16T14:30:17+09:00">2023-01-16</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%EC%9E%90%EB%B0%94/" itemprop="url" rel="index"><span itemprop="name">자바</span></a>
-        </span>
-    </span>
-
-  
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus: </span>
-    
-    <a title="disqus" href="/2022/09/19/floatingNumber/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/19/floatingNumber/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Symbols count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>2.2k</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>2 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>본 내용은 <a target="_blank" rel="noopener" href="https://www.codelatte.io/">코드라떼</a>를 공부하며 작성한 블로깅입니다.</p>
-</blockquote>
-<p>전 게시글에서 자바의 정수형과 실수형을 구분하였고,<br>정수형을 2진수로 변환했을 때와 음의 정수를 2진수로 표현 및 계산에 대하여 작성하였다.</p>
-<p>이번에는 실수를 2진수로 표현하는 방법과 그 과정에 대하여 공부하며 작성한다.</p>
-<h2 id="실수의-자료형"><a href="#실수의-자료형" class="headerlink" title="실수의 자료형"></a>실수의 자료형</h2><p>Jav에서 실수를 표현하는 두가지 기본형이 있다.</p>
-<ul>
-<li>Float</li>
-<li>Double</li>
-</ul>
-<p>Float는 4Byte이며 Double은 2배인 8Byte의 공간을 할당한다.<br>리터럴의 표현 방법은</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">float</span> <span class="variable">fNum</span> <span class="operator">=</span> <span class="number">3.14f</span>;  <span class="comment">// 수의 뒤편에 `f`가 있어야 함</span></span><br><span class="line"><span class="type">double</span> <span class="variable">dNum</span> <span class="operator">=</span> <span class="number">3.14</span>;</span><br></pre></td></tr></table></figure>
-<p>위 처럼 작성하면 된다.</p>
-<h2 id="실수의-정밀도"><a href="#실수의-정밀도" class="headerlink" title="실수의 정밀도"></a>실수의 정밀도</h2><p>실수의 정밀도란, 실수를 변수에 저장했을 때 이 값이 얼마나 정확한지 나타내는것을 정밀도라고 한다.</p>
-<p>아래에서 알아보겠지만 프로그래밍에서 실수를 저장할때 메모리를 효율적으로 사용하기 위해 <code>부동소수점</code>방식을 이용한다.</p>
-<p>이 방식은 무한한 실수를 효율적으로 메모리에 저장하는 대신에 변수에 저장된 실수가 원본 값과 100% 일치하지 않는 다는 단점이 있다. 그래서 실수의 정밀도라는 개념이 존재한다.</p>
-<p>Float일 경우에는 6자리까지 정확한 값을 나타내고(약 6 ~ 7자리)<br>Double일 경우에는 15자리까지 정확한 값을 나타낸다(15 ~ 16자리).<br>Double형이 메모리 공간이 큰 만큼 정밀도가 높다.<br>그래서 Float보단 Double을 사용하는것이 낫다.</p>
-<p>엥? 그런데 실수를 사용하면 오차가 생겨서 위험한거 아닌가?</p>
-<p>맞다.. 가급적 오차가 중요하지 않거나 정밀도가 보장된 범위 내에서 사용하는것이 좋다고 한다.</p>
-<h2 id="고정소수점과-부동소수점"><a href="#고정소수점과-부동소수점" class="headerlink" title="고정소수점과 부동소수점"></a>고정소수점과 부동소수점</h2><p>실수를 2진수로 표현하는데는 <code>고정소수점</code>과 <code>부동소수점</code>이 있다.</p>
-<h4 id="4byte-Float-고정소수점"><a href="#4byte-Float-고정소수점" class="headerlink" title="4byte(Float) 고정소수점"></a>4byte(Float) 고정소수점</h4><p>첫번째 자리의 부호비트를 제외한 31bit중에서<br>정수를 표현하는 15bit와 소수를 표현하는 16비트로 구성된다.</p>
-<p>이는 이름과 같이 고정되어있는 영역이라, 정수에서 사용되지 않는 비트는 낭비가 되고, 큰 수일수록 많은 메모리가 필요하다.</p>
-<h4 id="4byte-Float-부동소수점"><a href="#4byte-Float-부동소수점" class="headerlink" title="4byte(Float) 부동소수점"></a>4byte(Float) 부동소수점</h4><p>이를 해결하기위해 <code>부동소수점</code>이라는 방식을 사용한다.<br>4byte(32bit)의 부동소수점은 <code>단정도</code>라고 한다.</p>
-<p>첫번째 자리는 부호비트이며 8bit의 지수부와 32bit의 가수부로 구성되어있으며, 실수를 지수부와 가수부로 나누어 저장한다.</p>
-<h4 id="8byte-Double-부동소수점"><a href="#8byte-Double-부동소수점" class="headerlink" title="8byte(Double) 부동소수점"></a>8byte(Double) 부동소수점</h4><p>8byte(64bit) 부동소수점방식은 <code>배정도</code>라고 한다.<br>똑같이 앞 1bit는 부호를 나타내며, 지수부 11bit와 가수부 52bit로 구성되어있다.</p>
-<h4 id="14-14를-단정도-Float-부동소수점-방식으로-저장하기"><a href="#14-14를-단정도-Float-부동소수점-방식으로-저장하기" class="headerlink" title="14.14를 단정도(Float) 부동소수점 방식으로 저장하기"></a>14.14를 단정도(Float) 부동소수점 방식으로 저장하기</h4><p>14.14라는 실수를 단정도 방식으로 변환되는 과정을 알아보자.</p>
-<ol>
-<li>14.14에서 정수 추출<br>  14.14 -&gt; 14</li>
-<li>정수를 2진수로 변환<br>  14 -&gt; 1110</li>
-<li>소수부분을 추출하여 가수부 비트 수(23)까지 2를 곱하며 2진수 추출<br>3.1 곱한값이 1이될때까지 반복하며, 1이 넘어갔을 때 1을 감소시킨 다음 다시 2를 곱해나가는 방식이다.</li>
-</ol>
-<ul>
-<li>0.14 * 2 &#x3D; 0.28 -&gt; (1보다 작아 0)</li>
-<li>0.28 * 2 &#x3D; 0.56 -&gt; (0)</li>
-<li>0.56 * 2 &#x3D; 1.12 -&gt; (1 이상이라 1을 감소시키고 이진수 1 표현)</li>
-<li>0.12 * 2 &#x3D; 0.24 -&gt; (0)</li>
-<li>0.24 * 2 &#x3D; 0.48 -&gt; (0)</li>
-<li>0.48 * 2 &#x3D; 0.96 -&gt; (0)</li>
-<li>0.96 * 2 &#x3D; 1.92 -&gt; (1)</li>
-<li>0.92 * 2 &#x3D; 1.84 -&gt; (1)</li>
-<li>0.84 * 2 &#x3D; 1.68 -&gt; (1)</li>
-<li>0.68 * 2 &#x3D; 1.32 -&gt; (1)</li>
-<li>0.32 * 2 &#x3D; 0.64 -&gt; (0)</li>
-<li>0.64 * 2 &#x3D; 1.28 -&gt; (1)</li>
-<li>0.28 * 2 &#x3D; 0.56 -&gt; (0)</li>
-<li>0.56 * 2 &#x3D; 1.12 -&gt; (1)</li>
-<li>0.12 * 2 &#x3D; 0.24 -&gt; (0)</li>
-<li>0.24 * 2 &#x3D; 0.48 -&gt; (0)</li>
-<li>0.48 * 2 &#x3D; 0.96 -&gt; (0)</li>
-<li>0.96 * 2 &#x3D; 1.92 -&gt; (1)</li>
-<li>0.92 * 2 &#x3D; 1.84 -&gt; (1)</li>
-<li>0.84 * 2 &#x3D; 1.68 -&gt; (1)</li>
-<li>0.68 * 2 &#x3D; 1.36 -&gt; (1)</li>
-<li>0.36 * 2 &#x3D; 0.72 -&gt; (0)</li>
-<li>0.72 * 2 &#x3D; 1.44 -&gt; (1)</li>
-</ul>
-<p>23번 자리까지 표현했을 떄 00100011110101000111101 이 나온다.<br>이를 정수부와 소수부를 연결했을 때<br><code>1110.00100011110101000111101</code>이 된다.</p>
-<ol start="4">
-<li>맨 앞자리까지 소수점을 이동시킨다.<br>1.11000100011110101000111101 (3자리 이동)</li>
-</ol>
-<p>5.앞의 1을 제거한다.<br>11000100011110101000111101(2)</p>
-<ol start="6">
-<li><p>소수점을 이동하며 소수부가 23자리 이상이 되었는데 넘어간 자리수는 제거(3자리)<br>11000100011110101000111(2)</p>
-</li>
-<li><p>이동한 소수점 자리수 + 127(32bit Bias) 계산<br>3 + 127 &#x3D; 130</p>
-</li>
-<li><p>130 2진수 표기<br>10000010(2)</p>
-</li>
-<li><p>계산된 비트를 연결하기<br>부호비트 0<br>지수비트 10000010<br>가수비트 11000100011110101000111</p>
-</li>
-</ol>
-<p>연결비트 01000001011000100011110101000111 이 된다.</p>
-<p>배정도(8Byte)또한 변환 방식이 같다.</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
@@ -1791,13 +1758,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">30k</span>
+    <span title="Symbols count total">35k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">27 mins.</span>
+    <span title="Reading time total">32 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
