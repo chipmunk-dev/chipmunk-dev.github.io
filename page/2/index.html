@@ -136,18 +136,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">23</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -187,6 +187,135 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2022/09/20/constant/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/09/20/constant/" class="post-title-link" itemprop="url">Java의 두 가지 상수</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2022-09-20 23:25:04" itemprop="dateCreated datePublished" datetime="2022-09-20T23:25:04+09:00">2022-09-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-01-16 14:30:35" itemprop="dateModified" datetime="2023-01-16T14:30:35+09:00">2023-01-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%EC%9E%90%EB%B0%94/" itemprop="url" rel="index"><span itemprop="name">자바</span></a>
+        </span>
+    </span>
+
+  
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2022/09/20/constant/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/09/20/constant/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>461</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="상수"><a href="#상수" class="headerlink" title="상수"></a>상수</h2><p>프로그래밍에서 변할 수 없는 수를 <code>상수</code>라고 한다.<br>자바에는 두가지 상수타입이 존재한다.</p>
+<h3 id="리터럴-literal"><a href="#리터럴-literal" class="headerlink" title="리터럴(literal)"></a>리터럴(literal)</h3><p>자바에서 리터럴 혹은 리터럴 값이라고 많이 표현하는데<br>정수: 100, 500, 3 …<br>실수: 3.14, 2.111111 …<br>문자: ‘Z’, ‘오’ …<br>문자열: “배고파”, “안녕” …<br>논리: true, false</p>
+<p>등 값 그 자체를 리터럴이라고 한다.</p>
+<p>100과 500은 <code>정수 리터럴</code>이며, 3.14, 2.11111 은 <code>실수 리터럴</code>이다.<br>리터럴은 상수이며 변할 수 없다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 변수</span></span><br><span class="line"><span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 리터럴을 변수처럼 변할 수 없다.</span></span><br><span class="line"><span class="number">100</span> = <span class="number">500</span>; <span class="comment">// X</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="심볼릭-Symbolic"><a href="#심볼릭-Symbolic" class="headerlink" title="심볼릭(Symbolic)"></a>심볼릭(Symbolic)</h3><p>심볼릭 상수는 변수와 <code>final</code>키워드가 같이 사용된 형태를 말한다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">MAX_NUM</span> <span class="operator">=</span> <span class="number">10000</span>;</span><br></pre></td></tr></table></figure>
+
+<p>위처럼 앞에 <code>final</code>을 상징적으로 붙여 “ 이 변수는 앞으로 상수야! “ 라고 표현해줄 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line">num = <span class="number">500</span>; <span class="comment">// Error</span></span><br></pre></td></tr></table></figure>
+
+<p>다만, 초기화를 하지 않고 선언했을 때 값을 한번 할당할 수 있다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="type">int</span> num;</span><br><span class="line">num = <span class="number">100</span>; <span class="comment">// 가능</span></span><br><span class="line">num = <span class="number">500</span>; <span class="comment">// 불가능</span></span><br></pre></td></tr></table></figure>
+
+
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1466,13 +1595,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">35k</span>
+    <span title="Symbols count total">36k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">33 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chipmunk-dev.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.13.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3038398824598758" crossorigin="anonymous"></script>
+
+    <meta name="description" content="컨테이너 기술과 Docker의 탄생배경   컨테이너(Container)어떤 어플리케이션을 실행하기 위해서는 어떤 환경이 구축되어있어야 합니다.‘A’ 프로그램이 있고 이를 실행하기위해 ‘B’ 프로그램이 반드시 필요한 경우이것을 A가 B에게 의존한다고 합니다. 예를 들어 제가 만든 Chipmunk App 서비스가 있다고 가정하겠습니다.이 프로그램은 node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker의 컨테이너 개념">
+<meta property="og:url" content="https://chipmunk-dev.github.io/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/index.html">
+<meta property="og:site_name" content="Chipmunk Devlog">
+<meta property="og:description" content="컨테이너 기술과 Docker의 탄생배경   컨테이너(Container)어떤 어플리케이션을 실행하기 위해서는 어떤 환경이 구축되어있어야 합니다.‘A’ 프로그램이 있고 이를 실행하기위해 ‘B’ 프로그램이 반드시 필요한 경우이것을 A가 B에게 의존한다고 합니다. 예를 들어 제가 만든 Chipmunk App 서비스가 있다고 가정하겠습니다.이 프로그램은 node">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-31T01:55:38.000Z">
+<meta property="article:modified_time" content="2023-03-31T06:13:30.736Z">
+<meta property="article:author" content="chipmunk">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://chipmunk-dev.github.io/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://chipmunk-dev.github.io/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/","path":"2023/03/31/docker를-공부해보자/","title":"docker의 컨테이너 개념"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>docker의 컨테이너 개념 | Chipmunk Devlog</title>
+  
+
+
+
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-10RZML3TYR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-10RZML3TYR');
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Chipmunk Devlog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"> 컨테이너 기술과 Docker의 탄생배경 </span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-Container"><span class="nav-number">1.1.</span> <span class="nav-text">컨테이너(Container)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%9D%98-%EA%B2%A9%EB%A6%AC"><span class="nav-number">1.2.</span> <span class="nav-text">컨테이너의 격리</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%ED%99%98%EA%B2%BD%EC%9D%B4-%EB%8B%A4%EB%A5%B8-%EA%B0%9C%EB%B0%9C%ED%8C%80%EC%9D%98-%EB%AC%B8%EC%A0%9C"><span class="nav-number">1.3.</span> <span class="nav-text">환경이 다른 개발팀의 문제</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%EB%B0%B0%ED%8F%AC%EC%9D%98-%EB%AC%B8%EC%A0%9C"><span class="nav-number">1.4.</span> <span class="nav-text">배포의 문제</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">chipmunk</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chipmunk-dev" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chipmunk-dev" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:devquokkajeong@gmail.com" title="E-Mail → mailto:devquokkajeong@gmail.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://chipmunk-dev.github.io/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="chipmunk">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="docker의 컨테이너 개념 | Chipmunk Devlog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          docker의 컨테이너 개념
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2023-03-31 10:55:38 / Modified: 15:13:30" itemprop="dateCreated datePublished" datetime="2023-03-31T10:55:38+09:00">2023-03-31</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%EB%8F%84%EC%BB%A4/" itemprop="url" rel="index"><span itemprop="name">도커</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus: </span>
+    
+    <a title="disqus" href="/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2023/03/31/docker를-공부해보자/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>1.2k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2> 컨테이너 기술과 Docker의 탄생배경 </h2>
+
+<h3 id="컨테이너-Container"><a href="#컨테이너-Container" class="headerlink" title="컨테이너(Container)"></a>컨테이너(Container)</h3><p>어떤 어플리케이션을 실행하기 위해서는 어떤 환경이 구축되어있어야 합니다.<br /><br>‘A’ 프로그램이 있고 이를 실행하기위해 ‘B’ 프로그램이 반드시 필요한 경우<br>이것을 A가 B에게 <code>의존</code>한다고 합니다.</p>
+<p>예를 들어 제가 만든 <code>Chipmunk App</code> 서비스가 있다고 가정하겠습니다.<br>이 프로그램은 <code>node v18</code> 버전만 사용해야합니다.</p>
+<p>그런데 동일한 환경에서 <code>node14</code>를 필요로하는 <code>Old App</code>이라는 프로그램을 실행시켜야 합니다.<br>그럼 동시에 두개의 프로그램 실행을 보장할 수 없습니다.<br>이것을 <code>의존성이 충돌하한다</code> 합니다.</p>
+<p>도커의 컨테이너 기술은 이런 문제를 해결합니다.<br>Application을 Container 내부에 구성합니다.<br>하나의 컨테이너에는 그 Application을 위한 환경이 구성되어 필요로 하는 의존성들을 모을 수 있습니다.<br>즉, 컨테이너 내부에서 실행중인 Application은 어떠한 의존성도 공유하지 않고, 각자의 고유한 의존성을 포함하고 있습니다.</p>
+<h3 id="컨테이너의-격리"><a href="#컨테이너의-격리" class="headerlink" title="컨테이너의 격리"></a>컨테이너의 격리</h3><p>한 컴퓨터안에 여러대의 컨테이너가 존재하고, 각각 컨테이너에는 Application의 실행 환경이 격리되어있습니다.<br>하나의 컴퓨터 내에 다른 버전의 <code>node</code>를 설치할 수 있는것은, 컨테이너가 각각의 환경을 높은 수준으로 격리하기 때문입니다.</p>
+<ol>
+<li>프로세스</li>
+</ol>
+<ul>
+<li>특정 컨테이너에서 작동하는 프로세스는 기본적으로 그 컨테이너 안에서만 엑세스할 수 있습니다.</li>
+<li>컨테이너 안에서 실행되는 프로세스는 다른 컨테이너의 프로세스에게 영향을 줄 수 없습니다.</li>
+</ul>
+<ol start="2">
+<li>네트워크</li>
+</ol>
+<ul>
+<li>기본으로 컨테이너 하나에 하나의 IP주소가 할당되어 있습니다.</li>
+</ul>
+<ol start="3">
+<li>파일시스템</li>
+</ol>
+<ul>
+<li>컨테이너 안에서 사용되는 파일 시스템은 구획화되어 있습니다.<br>그래서 컨테이너에서 명령이나 파일 등의 엑세스를 제한할 수 있습니다.</li>
+</ul>
+<h3 id="환경이-다른-개발팀의-문제"><a href="#환경이-다른-개발팀의-문제" class="headerlink" title="환경이 다른 개발팀의 문제"></a>환경이 다른 개발팀의 문제</h3><p>하나의 웹서비스에서 Java, Node, Ruby등을 동시에 사용하고, 어떤 개발자는 windows에서 어떤 개발자는 mac에서 개발을 진행한다고 가정해봅시다.<br>이렇게 다른언어와 다른 운영체제에서 같은 개발환경을 가지는것은 까다롭습니다.<br>docker를 이용하면 컨테이너를 운영체제위에 올려 전부 공통적인 개발환경을 이용할 수 있습니다.</p>
+<ul>
+<li>OS에 상관없이 애플리케이션 실행환경을 만들 수 있습니다.</li>
+<li>개발을 컨테이너 위에서 진행할 경우, 모든 개발팀이 동일한 환경 아래서 개발을 진행할 수 있습니다.</li>
+</ul>
+<h3 id="배포의-문제"><a href="#배포의-문제" class="headerlink" title="배포의 문제"></a>배포의 문제</h3><p>앞에서 본 개발환경이 다를떄 발생하는 이슈는 배포에서도 똑같이 발생합니다.<br>배포란 Application을 <code>특정 런타임 환경(aws ec2 등)</code>위에서 실행됩니다.<br>이는 서로 다른 환경을 가진 개발자들이 배포때에도 충돌이 발생할것입니다.<br>그래서 이제 배포서버에서도 docker의 컨테이너를 이용하여 실행시킬 수 있습니다.<br>이는 로컬에서 개발할때의 환경과 배포할때의 환경이 같은 컨테이너를 실행시키기 때문에<br>동일한 환경을 구성할 수 있습니다.<br>EC2 서버에서 도커 컨테이너를 사용하거나 ECS와 같은 도커를 좀더 편하게 쓰는 서비스를 이용한다면<br>쾌적하고 편하게 애플리케이션을 배포할 수 있습니다.</p>
+<p><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBIVFRgVFRUYGBgZGBoaGBgZGBgYGRoYGRgZGhgZGhkcIS4lHB4rIRgaJjgmKy80NTU1GiQ7QDs0Py40NTEBDAwMEA8QGRERGjQhISE2PzE/NDc1ND8xNDQ4NDE2ODQ2MTUxMT80MTY0NDQ/Pzs1NjYxNDYxNDU2MTY1ODQ0Mf/AABEIANkA6AMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAABAAIDBAUGBwj/xAA+EAACAQIEAwUFBwMDAwUAAAABAgADEQQSITEFIkEGUWFxgRMyUpGhFEJyscHR8DNikiOC4Qei8RVDU7LC/8QAGgEBAQEBAQEBAAAAAAAAAAAAAAECBAMFBv/EACcRAQEAAgEEAAUFAQAAAAAAAAABAhEDBBIhMUFhgZGhEyKx0fFR/9oADAMBAAIRAxEAPwD06KCKAYoopAoYIrwDeCK8EAxXghEBRWihgACGEQwGgQ2hlHi3FKeGQu5t3DqT3CA/iOPp0ELuwAH18BPMeN8XqYx7klaQPKnf4mVuN8ZfEP7SqSEB5UFyB4tDhKtB1PPqBoFsQT0HhNSM2qivVXQoGHQqbG3kf3lqpxhWUI6ZLdShB06ZhpEDETKjNqP7VhfRBqq7FyOpHwx4uSANyQB+QEkx608uZwLLseo8jveVcHhXfIELh22QnP4i99Rp4w0mxoCXQgFlJzNe48h5TNarZ1VRqd7dF6ky/ieHYhDZlW578yfTW8o1aJpixuS2ruFJH4bDUCUJ8VrYajvMeX0DFCAdjrYythUps6hnAW/MRqQPwjWWuK4u59mjuaa2Ch+8dR1t3XgNDKesPswfGZ1MEvobBeZj+Q8zG1cW7G97DoJBfaiO6KDD+0NNqmdMqm2UuA5PgsUD6AiEbeG8yp14LwRQDeKCKQKKKKAYYIoBiiEUA3hvGzG7RdoKeFS7G7n3U6+vhCJ+Ocap4ZC7nX7q9SZ5njMVWxdTO9zc8idB3aSHEVqmIc1apufujoB00lX2GIQ5qdQEXuFcWI8AwmpE21HpsgKMmptqb3Hl01lKrg6b6sgv37H5jWNp8br0z/qU2/EoDr+/0gw+PpPorgnuJs3yOsqG/Y2X3Kjr4NZx/wB2v1iz113VHHepKH5G4+suXjWYAXJsIGViCxIeqLKpGVPesfje38E0MLUw7Jn9o4cZiSgzA/CFKnTzPfKFDENUfONEFwg+PvY+HdLX2Wi2roL/ABDlb0I1laVa3EajkZ3ZiBYXN7CXuJ8cVqQVaQU3GxB1AsFTQWv1veRHhYYgU6r36K6ioD6nm+srVOGvTLMxVnW4VbZFB2OhJsemsMoGHKqOFZieYkCy3O1/Dvl3HcGpogda4ZSQLIxOtrnlNwB8pXwfEKdJiatHNfcOCAB1swupPXeZ9atmYsqgKTpl1AHoTI00a3B6gpqUQlDZje5z5iQvMNjcaTKOFa5ujabgWcfSzfSaWG4/iUQotUhcgUbXVRc8p6bnXeVEqMiFzfO/ujuQdT4mA7ifEEqKiKiJkv1522ABzAGwtFLuBTBtTtWZxU5ibjQ7ZVFwRqLkk27oZWXuMUUUw2UdGxSB0UUUBRRRQDFBHQEIopy3aztUmGBROaqem+X/AJgWe0/aWnhVyizVD7q93iZ5ka7Vqpes93OuUnYeAipo7ualUlmJvrJcTgKdS2ZQbbHYjyPSakRoGkgS4fWw08eokImYMBVT+nWa3wuM4+e/1h+31U0qUr/3Ic3rlNj8rystOQYjBUn99FbzAv8AOMw/EaLmyuM3wtyt/i1jLcNMw8KK/wBOq6eBOdfk1/pIa2DxD8lR0KdcilWbwJudJswEQMrBcQp02HtUy5bjK4svcCGtlI62JlnG4mm5BppZbanSzHv0JAHrIsfibMtNQCxsWvsqA6k+ewiTh1JjexQ/EhKH1y2vAkweLdCSjZSd9Be3dKWNxLVqrFjyq2dyNMzk3CDw6n0lp+E1fuV7j+5EzDybT63lTE4Z6QVQjlAN15mzX1LDrfvEBGuxNzGPTotqUAPxLyn5iSYjiFKoqqqhXVVUANluBuSjANmO97mVjfYgjzEC43ADkWs2dqdr2Z1Nxmtc/eIvpK9WnUL50QOFZSACLjLYhSjaMPXrLGK4nV9lld8yCxC2W5YDKguBcnW2plJiyIEvzsc7kd5Gi+g/ISh3FuMVKos4Cm5LEhhcnuLXA8g1vCCQpVtpuIpB9AwwQzCiIIooDo2KOEBRRRQFDFOI7U9qt6NBvB6g/JT+son7W9qhSVqdE5n2Zhst9LDx/Kece3RXDVm5nucxvlv3X6byyTfeMZQRYgEdx1EsiN3B4jD5NVzE9RqD3WN9JUEwf/TwpvTZqZ/sPL6qdJKmMxKe8qVB3qcjeoOhlGricQiIXc2A/gA7yZn4FKlRzVe6giyp8K7697HrKlSqXdHr2Rc1kS9wGsTmY7ZtLDunTYalTK2z5e7Tltbe8CpXwVJxZlUjxEqrwt1P+jVde5Dzr8mv9LTZfBuBcWYd6m/f09JCMw7x06j0gZbYvEp79IOBuyHKf8G0+sD8aS1lVy/RCjLr4tawHjeDiWMerU9mhJswNRxuWvcIPHqZfTCqBqLnr/xAzMDTtmZmzMW5272sDl8AARpNt8Iop+0WorAEAjY5j0A6/TaZlfhIzF0Z0Y7lTofxKdD6iV6tHEp7yK43BF6bHx6qfkIZaSvNDFY2mtMKmvUu4s46nbS3mTOZXiCr72dPxqbf5rdfyjMRi1q8isCg1qODcZR9y/eevhKJvbLUBZ0VlY8gIB5QAMxv37+oip8Op25Gen4A3X/Brj6Sxw3APXcquVbKWObQKq6AaeYHmZJi8I9Jsr2uRcWN9PzHrI0q0uFuGDO4cKbqAoUX6Egb2lJMQaTq1RNVbMwdS1N7H4h0t0O01sM4zDO2VdycubbpluL38xLnF61C96QIS2clmva4uUtbly6jc+coweIcQp1QpRACCxZwUOYG1lsiqLDXUi+sUFZKJVWemMzAkW5WAvpdl12IgkHvUV4oZhSiEUUBRRRQFCzAC5NgNyegjKtRUUsxCqBck6ACec9p+07VyadMlafU7F/PuXwl0LfantUXvSoGybM43fwHcv5zjyYy8F5rSH3ivGXivAdeGMBjkQsQFBJOwAuT5AQG1KasCGAIO4OolVcGya0ajp4XzJ/g2k6fC9lMY4v7PIO+owT6HX6S/T7E1fvV6I8s7fks87yYT3lJ9SY5X1HJ0eL4mmedA4GuambHTUXRt9uhkmO4+1VQlMNnItmZSoQdWPe3cPAd06ep2Jq/dr0W8y6/mszsV2VxiAn2RdR1plX+im/0lnJhfWUv1LjZ7jO4PhVRAw1vsd797E9SZtNgqlrgZhb7pv6ePpOTGFqUyfZO9PXVCMyX68jbS5Q45iKfv0yQDfNSY/PI3XQdek2Nh0I0II8/O35iSNiuQLqMua5voVaxNx4WkGD7Q0KllzI1rcrjI+mlrG3TTTw7pj8YxQdvYoRl96qwOip8F+8/lDIUMS1RmYDkYhUFtSFvmc+H6DxlutgkZSnQixG2++20OAo2GYi1xZR8KdB4E7/IdJZaGmI2Erobq4cDbPcMLdzrqT4kGRVsbUveorg9WP8AqDTvZdfmJttLHDsJTdj7RwoAsOYBix93KCNR03G4gYOHxat7pDfhIP0GokmIcOVp9Pef8A2B8z9AZY49wqhTZg2Vyq3ZspQg76NudLEHxlU4KmqMqcudTrcltRa+up3gVSWqPcAksQFHW33R+v8AuijVr1qbZsuvxIFcG+5yMLj6xSj6BvFBFPNTooLwEwDIsTiUpoXdgqqLkmR4/HU6KF6jWUfMnoAOpnl/aDj1TEvryoDyJfbxPe0sgsdpe0b4lsi3WkDovVv7m/aYEUbNIN4CYIbwFeK8E1+zPB/tNWzaU0Geo39oPujxbb5xbJN0WOz/AGcfEDO7ZKINi9rs5G60x1PjsJ3OBw9KgMtBAne+7t5udfQR7ODYABVUWRRoFUbACNvPhdT12WduOF1PzXbx8Mk3l5p5a+p185RxeGDNf2zobWADAD/GWzOXbhWIdzmG51ckW8+/0nh0+Mytyyy1p6Z+JJJtru+Jpam1VOulnHy3mnQq3Adbi4uNwRGoLAC97AC/lIMXjkp2zBteoFwPMzNtzsmM8/L4rrXu+E+OwdDEC1emHOwdbLUXyYb+RvOG7QdnKmGs6nPSY2VwLWPwuPun6GdnhsfTf3HBPdsfkZcpstmRxmRxldTsQf1nZ0/V8nHlMOX18/cePJw45Tux9vHq+GRveVW8wL/ORtg1CMiWS/UDr49+03e0PCjhq7U9195G+JG90+fQ+ImYZ9pxmpxV1/q0if76fMPModR9Zbw2OpVNEdWPw7N/ibGVpBXwtN/fQHx6/PcQOgp0aTBQXKMfezDQHNa1tNLEG9+h02vHiOHVFUvylAAcwYbG3Q67sBtvfumCtKqn9OqbfBUGdfIE8wHrHHiNcDK1EnW/I4KE9+VtR6wBi2zuEvyrZ3PgPdU+ZF/IGGhdrufvbeCD3B9Sf90qkWyq5Aas5zm+lrXyX8bBPWaLwImigaKB7nDADFMKUrY/G06KNUc2VR6k9APEydmtrOA7dcRLutEHRBmYf3EaD0H/ANpRicb4xUxL5nNlHuINlH6nvMzYDEBfQddhNIM1j2ZxmTP7FiAASoKlwCLglAcw+U6Xs/2bqUAtZqIq1zYrTZ1VaS9He+pc9ABp5yPGYXEPjAgVMPXcZ86PUObfc9+h6dIHDMpBIOhGhB0IPiIJ6TiTh69VMLVRMTVAIq4gFaRQjorKOe3d/wA2h4LwLBJVZ6FUYl0NkpOyoAwPvlrc4HQgW89IHPUeyNYojPUp0mcXRKhZSw8WtZSegOs6rgPB6mFwxSooDvUJaxB5FACi48bn1lfiVfEM1qxYv7S1NAnIF1ClEb33ZrlSb2C5jYSbiLNhqKqzk1DzEXzJTU6AAEgsb7ndjc9wnP1MuXFZj7vh6cM/dF4mVcTiQBYHXw6TFp4/NYObMT7tydLXuR90WlqgyNre6962M+Henyxvl9bDHG+d7+S7QxYVbuwAvYE9dNpcp1FYXUgjvBBEq5qLLlIBHcw+uvWUq/Dil3w7EEalQbgjw/YyTDHLxbq/h5cndLbrw2rzn+Pe1LgANktplvYnre3WanDcX7VM1rEGxHS47vCW7yceV4eTdm7GMp3Y+Kw8BwjMhzgq17odmHn+01cClRVtUYMQdCL6jpe/WT3hvHLz5cm9/wCJMJj6YH/UGiDSw1Xrz0z4jcfkfnOGvO3/AOolfKmGoX1Aaow7r2C//v5Thrz9FwyzDGX3qPn567ro68V4LxXnohwaGMhvAZXw6OuVhcH+aSn9hqr/AEqpt8L8y+QO4mgDI/bXYqqliPeIIAF9hc9YFBsZUX+rSIHxJqvnbcRS/wC2A966H+7Qf5DT6xQPcYjFEZhUVc7TyvtWxXFVL94I8VKr+Vp6s6XE4rtlwH21nXlce6eh/tMsHEhgdp0nYnG4OlVL4k5W09m7DkU65ix+6drE6bzjKvtKTZHUq3lofEd/pJkxIO80j2zH8Co129vTdkqEAirTfcdL2NmE5xsXjKlR8Mj06jgZHxSKVZEucys2wPl+e3DcL4riMMb4eoUB3Q81Nu/NTOnqLHxnUYLtdhqlB8NWpjCGoLGrSXNRLE7sBzID1vcW6wLtbD0aYalTppVQLZq2HdHxIv75ZfhO1hoB11MzcAivmppRGIRNVdQKOIAOt1sSXsb6ENt0kzYMIiNUpB6YHJi8IwOnRmto3mbHxk3CqVPEO/tHL06aZxiwppOpFrBm+8d/eudNDINvguJqIhrGo9WggbkqUia6uNMqsPe31a9tOmtue4rXpVsQz0nZi4BGYMCthqoYara22omvgftGLBYYipRw1NSFctZ3K7u7aeZ6Dbe5lPhWHpV6dapiTyUzyYlRkdrX0Pxm2XcE81rzGePdNS6bwymOW7Nsx6dRbXJLsDma+XKBsA+1vC2sgouFs2oAXTKCrOb6XvcN12mnQoVDTfEuQlEcqI3vP0FhY3P5m/QSzg+D16ypVCFNLrfKRl7wpsdfScnbnj4yn2dndx392N+6DCOxXO5XIFJLqTofht1PSW6VIN7jqTa5W9mF+8bgyrxjAVFZSUKqpC58pJuxuzkDovQd5lOq5VuQFBkyqACHCkixv8bm/kNZz/oTObni37Rq9TlLr3HR4ZKgvmOnneWJj0uIshSkedy3Ob2VOpUHqVH/AJmrSqKzMgOq5Q3QAt7oLHS57pw58HJ3et7/AOfyv6mOXm+EklV6dNGr1my001JP3j0UDqb9JHxTFUMIgfEEktcIiC5YgXtfYepE857Q9oKuLcZ7Ii+5TX3V8SfvN4/K07el6DLumXJ8Ph/bn5eaa1ir8a4m+JrPWfTMdF+FRoq+g+t5SjLwz7DlOivGxQH3iEbCICq1Aqlj0F47C0iiC/vHmf8AEd/loPSQ5c9RU6LZ39DyD56/7ZeaBC0MDQwPbIoophSjKtJWFmF4+CBzfFuz6OpBUOvcRqPIzg+K9kqiEtRN/wCxtD6N19Z69IcRhUccw9ZR4M1R0bK6lGHQiWExAO89Q4v2bR1IZA4/7h5HpOC4p2SqIS1Fsw+BtG9DsZdppBw3H1sM2fD1Wpk+8Bqj/jQ8redr+M6+l23pYii2GxqGjnAHtqQLJcEEFk95NQO8eInnIrOjZXUow3BEspiAd9JR6lhOD4qtRSmMVSbCjUPTIJZAb2uB+Z+cYiJjHFNOTBYfc3sHIBJJbvOpv0BJ3M884dja2HfPh6jU2O+XVW/Gh5W9RedXQ7Y069I4fFIcOGNzWoLdGbqXp+8oJ1Nr7biQTYPFIaLJVw7vh1qNlqoXDIT1udDpbcDxmxw2tiEF8JXXFUxvSflqKO4A6/LTwkXDsbisLTUoExWF1yvSINgTc3y7bkm4PnLC4XAYsGpQc0KijMSvKV/uK3tbxU+sDXXtAn2d61Sk6ZTlyPoWe3urfU+ZA69051eI0KmU4ii+Hd9UrU1OVswALAEHmsLXFyOloMIlTHVVV3d6FAasdDUP6Fvoo7zc6GJ7VhEdHwzU6i+4rAFNDym/S2h07tDGhJiuE5GdqVJHRKYpUqY5udzzvUB8LXJ6TMwuHbKUpqzrQqBjUp5XLVcozM9F9XVTcCxBA2vK1J6tEimj2xNUh6zn/wBtBdwrX20u7egl/EccwbsGZKoZbL9qQBGv3nL0O9iPSQbvDMcMSr06qUnUDmIN1/C9J+dG87jTeeRcYNH29T2H9LOcmt+XwPde9vC09L45WepgX+yt9od8qVHUKKmTXNdVAN7ctrX5iZ5Q6kEgggjQgixB7iJoGAQR0BCGCKAYSwAudhvAJG6Z3Wn0PM/4FtcepsPWBZ4bTITOw5nOc+A+6Plb1Jlh5I5kTQIWhjWhge2RXjYphToo2G8AwGGKA2V8Tg6b7ix75ZtDA5HjXZlHFnQOOh+8PIzgeJ9k6tO7USXX4D7w/ee2SpisBTfcWPeJdjwJcSyHKwKkbhgRLiYgHfSek8b7Lo450Djow0Yeu84LiXZWtSu1I51+H7w9Osu00XD8bWw758PUamx3ynlb8aHlb1E6vA9raFVHpYmn9napbPiMOvI1ts6aso77X66iedpiipysCpG4P80lxK4O+ko9Y4B9ow4X2bUq+FYlvaoRZRa7MSut7DbXoLiZ2J4j7V3xlQciHLh0OzPuLjuHvN6CcPw7iFbDvnoVGRjvlPK340PK23UXnU4ftPhsTkXGJ7J0vkq0wWpXY3JelqRc6nfbUiBs0+DuMHWr1GtVqLmLNocgYOVPi1vqBJuzPaHDJSWhVXJoeYi6Pc6k9x89PGZnFaeMNED2n2jD3DCohD3A+IjW3XW403kvFeMYV8NToYdMzXCgMt3TbUHqzE7g9TILnabBYegi4jDP7NywyhG5WG5IA2AHdp4axvF+IYGqlNcXSLVSiF2QBXpllB1a4PUHLrvtLvC+x1FQj1SzOACyXGTNvawFyPXWanFcVg6J9pVCZ8pA5QXYdwG5H0gee4nsgXUvgqq10GpQ2SqvgV2P08BOYdGUlWBVgbEEEEEbgg7Geh9maRbEvilT2OHUOddFy22HhpmNtBacVx7iIxGIqVgLB25R/aAFUnxIAJ8TKKEUbHQFeS8KS4aod3PL+BbhfnqfUSpiFL5aa6Fza/cu7H5A+tpsgAAACwFgB4DaAx4xo5pExgMYQxrGGB7VFeCGYUooIoBiiMV4CMN4IoDoBBHCAjKuL4XTfpZu8S2Y69oHCcf7Jo4OdM3c66MPWcFxLszXpXamc6d1uYDy6+k968LTPxvB6b3I5W8NvUS7R4DSxRBsdLbgy4lcHfSd/wBoOySPfOlj0ddD6nr6zheI9ncRQuU508NwPFf2mtmlvhfFK+GbPQcoSbsBqjfiQ6Hz38Z0lHjeCxNvtKfZqv8A81IE02Pe6br56/inn1HF9PoZcp1wfAwPdeDq1PDgvW9vYFg68916BbXLaeesxeFYOhjKrYl0e6nK1N7MmYAWynuA6Ebmec8J4ziMM2ai5W+67o34kOnrv4zueH/9RKWQ+2osr7/6eUqx/wBxBX6+cCX/AKi8YFOkuGQ2Zxd7fdpg6L4ZiPkp755pLXFOIPiKr1X95ze3QDZVHgAAJVvAMIjRIsW5yhV95yEXzOl/Tf0gWeFJmZ6p29xPIHnPqdP9s0CYaNJURUXZQAPHx/WMYwAxkbRzGRuYDGMUBige3WjYobzClaCK8V4CiiJggOEV42EGAoRBHAwD/P5/OsIMaphvaBIPKSKf4P54SEH+fOPF/rKHtqOlvnpMrG8Cpvcpyn6fKahaIm+8DzLtB2RpuTnTI/R16+fQzhuI8CxGH1tnT4l1t5jcT6FdAwsRfzExcdwJTcpofhP6S7R4TQxfj6GXqdZT4Gdfx3sdTck5fZv8SjlPmNvlOL4hwjEYc865k+IXI+e49ZU0tRCZ1DGdL+kupWUwqWLhi56rP92nyr+NvePoNP8AdGvextLXBcooIBvrm78xJzX9YF9zIWjiZGxgNJkbGOYxhMBhMUDRQPcLRsMRmFKCCK8AiKCKARFBFAdCP54RkIMBwhJ/n8/msbFeA8H1jgIy8QP82vAkDftCD/48f3jAYQf4dJQ8HwEJHh+kYD/DDAbVpKw5hf0mLjuBg3ya96mbd4b/AM/n7QjynjXYym5JQezfwHKfTp6TjMfw3EYc2dCV6MNR6Hp6z6Er4dHFmF5iY/glwcoDA/dOun6y7NPEqOM8b+B3lhHBOZHKN17j+Jdj+c6bjfY2mxLU/wDTfu+6f2nHY3BV6By1ENuh6HyMqaaycRK6VVt/euq+o3WW1dWF1IIPUG4nPUMaRpe/gZOhUm6MUbrbY+a7GFbBMYxlIY5l/qLp8a6r6jdZaWoGF1II7xrARigMMD28xQmCYaC8EMRhAhgigGCIxD+fSUKEGAw9386QDaK8EMA/z9o4GMXrAsCS8MaIW6+n6QCdP5p/zFeM/aO6esCT+fnEDGtt8/0gX+fSA8QE/wA0jx09PzkfX+d8CtiMKjizC/j1nP8AEuBXBFg6ncGxnTP+/wCkY8Dx3jHY8XLUuQ/CdvTunJ4mhVpHK6Hz/Yz2zjfvThO1XuessHJYfHEbG47jvJ0yMboxRvDY+a7GYg96XjuJUan2p099bj401HqNxFJMP7sUD//Z" alt="개발밈">(이제 이거 안먹혀요)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>chipmunk
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://chipmunk-dev.github.io/2023/03/31/docker%EB%A5%BC-%EA%B3%B5%EB%B6%80%ED%95%B4%EB%B3%B4%EC%9E%90/" title="docker의 컨테이너 개념">https://chipmunk-dev.github.io/2023/03/31/docker를-공부해보자/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/docker/" rel="tag"># docker</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/01/25/JAVA-SOLID/" rel="prev" title="객체지향 설계 5원칙 SOLID">
+                  <i class="fa fa-chevron-left"></i> 객체지향 설계 5원칙 SOLID
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2022 – 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">2022. Chipmunk. All rights reserved.</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">36k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">33 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"chipmunk-devlog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
